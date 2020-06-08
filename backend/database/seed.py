@@ -14,9 +14,48 @@ conn = psycopg2.connect(database=url.path[1:],
 print("successful connection")
 
 cur = conn.cursor()
-cur.execute("""""")
+cur.execute("""
+
+INSERT INTO users (id, first_name, last_name, email)
+VALUES 
+(1, Colin, Mai, Colinmaisk@gmail.com),
+(2, Elizabeth, Brown, ElizabethBrown@gmail.com),
+(3, Ali, S, Alis@gmail.com);
+
+INSERT INTO projects ()
+VALUES
+(),
+(),
+(),
+(),
+();
+
+INSERT INTO whitelists ()
+VALUES
+(),
+(),
+(),
+(),
+();
+
+INSERT INTO tasks ()
+VALUES
+(),
+(),
+(),
+(),
+();
+
+INSERT INTO urls ()
+VALUES
+(),
+(),
+(),
+(),
+();
+""")
 try:
     conn.commit()
-    print("tables created successfully")
+    print("inserted intotables successfully")
 except:
     print("tables created unsuccessfully")
