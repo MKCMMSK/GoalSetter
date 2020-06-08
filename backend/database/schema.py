@@ -34,6 +34,7 @@ CREATE TABLE projects
     name VARCHAR(25) UNIQUE NOT NULL,
     description TEXT,
     start_date TIMESTAMP,
+    estimate_time INTERVAL,
     total_duration INTERVAL.
     user_id INT REFERENCES users(id)
 );
@@ -49,6 +50,9 @@ CREATE TABLE tasks
     name VARCHAR(25) UNIQUE NOT NULL,
     category TEXT,
     notes TEXT,
+    start_date TIMESTAMP,
+    estimate_time INTERVAL,
+    actual_time INTERVAL,
     project_id INT REFERENCES projects(id) 
 );
 CREATE TABLE sites
