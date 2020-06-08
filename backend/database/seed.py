@@ -22,7 +22,7 @@ VALUES
 (2, Elizabeth, Brown, ElizabethBrown@gmail.com),
 (3, Ali, S, Alis@gmail.com);
 
-INSERT INTO projects ()
+INSERT INTO projects (id, name, description,user_id)
 VALUES
 (),
 (),
@@ -46,7 +46,7 @@ VALUES
 (),
 ();
 
-INSERT INTO urls ()
+INSERT INTO sites ()
 VALUES
 (),
 (),
