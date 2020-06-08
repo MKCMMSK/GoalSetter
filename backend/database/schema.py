@@ -29,6 +29,8 @@ CREATE TABLE projects
     id INT PRIMARY KEY NOT NULL,
     name VARCHAR(25) UNIQUE NOT NULL,
     description TEXT,
+    start_date TIMESTAMP,
+    total_duration INTERVAL.
     user_id INT REFERENCES users(id)
 );
 CREATE TABLE whitelists
