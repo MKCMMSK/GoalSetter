@@ -48,11 +48,11 @@ VALUES,
 
 INSERT INTO sites (id, url, duration, time_of_day, productivity,task_id)
 VALUES
-(1, 'www.google.ca', ),
-(2),
-(3),
-(4),
-(5);
+(1, 'www.google.ca', 564, '2020-06-02 18:15', 'TRUE', 1),
+(2, 'www.linuxAcademy.com', 3600, '2020-06-02 20:15', 'FALSE', 1),
+(3, 'www.google.ca', 300, '2020-06-03 9:15', 'TRUE', 1),
+(4, 'www.justchiliing.ca', 1000, '2020-07-02 18:15', 'FALSE', 2),
+(5, 'www.google.ca', 200, '2020-06-03 13:15', 'TRUE', 1);
 """)
 try:
     conn.commit()
