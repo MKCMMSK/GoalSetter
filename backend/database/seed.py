@@ -46,13 +46,13 @@ VALUES,
 (4, 'complete hw','complete', 'take home interview assignment', '2020-07-01',10000 , 10000, 5),
 (5, 'online shopping','other', 'break time', '2020-05-01', 600 , 700, 2);
 
-INSERT INTO sites (id, url, timestamp, time_of_day, productivity,task_id)
+INSERT INTO sites (id, url, duration, time_of_day, productivity,task_id)
 VALUES
-(1),
-(2),
-(3),
-(4),
-(5);
+(1, 'www.google.ca', 564, '2020-06-02 18:15', 'TRUE', 1),
+(2, 'www.linuxAcademy.com', 3600, '2020-06-02 20:15', 'FALSE', 1),
+(3, 'www.google.ca', 300, '2020-06-03 9:15', 'TRUE', 1),
+(4, 'www.justchiliing.ca', 1000, '2020-07-02 18:15', 'FALSE', 2),
+(5, 'www.google.ca', 200, '2020-06-03 13:15', 'TRUE', 1);
 """)
 try:
     conn.commit()
