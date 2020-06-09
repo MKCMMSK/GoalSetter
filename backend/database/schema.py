@@ -58,7 +58,7 @@ CREATE TABLE sites
 (
     id INT PRIMARY KEY NOT NULL,
     url TEXT,
-    timestamp INTERVAL,
+    duration INTERVAL,
     time_of_day TIMESTAMP,
     productivity BOOLEAN,
     task_id INT REFERENCES tasks(id)
