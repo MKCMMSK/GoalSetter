@@ -32,11 +32,11 @@ VALUES
 
 INSERT INTO whitelists (id, urls, project_id)
 VALUES
-(),
-(),
-(),
-(),
-();
+(1, 'www.google.ca', 1),
+(2, 'www.youtube.com', 1),
+(3, 'www.google.ca', 2),
+(4, 'www.google.com', 3),
+(5, 'www.youtube.com, 2);
 
 INSERT INTO tasks (id, name, category, notes, start_date, estimate_time, actual_time, project_id)
 VALUES
