@@ -46,7 +46,7 @@ VALUES
 (),
 ();
 
-INSERT INTO sites ()
+INSERT INTO sites (id, url, timestamp, time_of_day, productivity,task_id)
 VALUES
 (),
 (),
