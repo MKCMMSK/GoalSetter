@@ -19,7 +19,7 @@ except:
     print("Not connected")
 
 # for localhost setup
-# insert config in .env fil "export DB_NAME=goal_setter..."
+# insert config in .env file "export DB_NAME=goal_setter..."
 # uncomment below
 """ DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
