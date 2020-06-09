@@ -22,7 +22,15 @@ VALUES
 (2, Elizabeth, Brown, ElizabethBrown@gmail.com),
 (3, Ali, S, Alis@gmail.com);
 
-INSERT INTO projects (id, name, description,user_id)
+INSERT INTO projects (id, name, description,start_date, estimate_time, actual_time,user_id)
+VALUES
+(1, "),
+(),
+(),
+(),
+();
+
+INSERT INTO whitelists (id, urls, project_id)
 VALUES
 (),
 (),
@@ -30,15 +38,7 @@ VALUES
 (),
 ();
 
-INSERT INTO whitelists ()
-VALUES
-(),
-(),
-(),
-(),
-();
-
-INSERT INTO tasks ()
+INSERT INTO tasks (id, name, category, notes, start_date, estimate_time, actual_time, project_id)
 VALUES
 (),
 (),
@@ -59,3 +59,5 @@ try:
     print("inserted intotables successfully")
 except:
     print("tables created unsuccessfully")
+
+    
