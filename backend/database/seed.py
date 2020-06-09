@@ -46,9 +46,9 @@ VALUES,
 (4, 'complete hw','complete', 'take home interview assignment', '2020-07-01',10000 , 10000, 5),
 (5, 'online shopping','other', 'break time', '2020-05-01', 600 , 700, 2);
 
-INSERT INTO sites (id, url, timestamp, time_of_day, productivity,task_id)
+INSERT INTO sites (id, url, duration, time_of_day, productivity,task_id)
 VALUES
-(1),
+(1, 'www.google.ca', ),
 (2),
 (3),
 (4),
