@@ -39,20 +39,20 @@ VALUES
 (5, 'www.youtube.com, 2);
 
 INSERT INTO tasks (id, name, category, notes, start_date, estimate_time, actual_time, project_id)
-VALUES
-(),
-(),
-(),
-(),
-();
+VALUES,
+(1, 'research python','research', 'checkout freecodingacademy', '2020-06-06', 3600, 3600, 1),
+(2, 'check out linux academy','research', 'look for aws course', '2020-07-01', 8000, 500, 2),
+(3, 'learn python','learning', 'check out django as well', '2020-06-07', 6000, 8000, 1),
+(4, 'complete hw','complete', 'take home interview assignment', '2020-07-01',10000 , 10000, 5),
+(5, 'online shopping','other', 'break time', '2020-05-01', 600 , 700, 2);
 
 INSERT INTO sites (id, url, timestamp, time_of_day, productivity,task_id)
 VALUES
-(),
-(),
-(),
-(),
-();
+(1),
+(2),
+(3),
+(4),
+(5);
 """)
 try:
     conn.commit()
