@@ -33,6 +33,8 @@ CREATE TABLE projects
     id INT PRIMARY KEY NOT NULL,
     name VARCHAR(25) UNIQUE NOT NULL,
     description TEXT,
+    start_date TIMESTAMP,
+    estimate_time INTERVAL,
     user_id INT REFERENCES users(id)
 );
 CREATE TABLE whitelists
@@ -47,13 +49,16 @@ CREATE TABLE tasks
     name VARCHAR(25) UNIQUE NOT NULL,
     category TEXT,
     notes TEXT,
+    start_date TIMESTAMP,
+    estimate_time INTERVAL,
+    actual_time INTERVAL,
     project_id INT REFERENCES projects(id) 
 );
 CREATE TABLE sites
 (
     id INT PRIMARY KEY NOT NULL,
     url TEXT,
-    timestamp INTERVAL,
+    duration INTERVAL,
     time_of_day TIMESTAMP,
     productivity BOOLEAN,
     task_id INT REFERENCES tasks(id)
