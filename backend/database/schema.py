@@ -35,7 +35,6 @@ CREATE TABLE projects
     description TEXT,
     start_date TIMESTAMP,
     estimate_time INTERVAL,
-    total_duration INTERVAL.
     user_id INT REFERENCES users(id)
 );
 CREATE TABLE whitelists
