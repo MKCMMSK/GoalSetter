@@ -18,17 +18,17 @@ cur.execute("""
 
 INSERT INTO users (id, first_name, last_name, email)
 VALUES 
-(1, Colin, Mai, Colinmaisk@gmail.com),
-(2, Elizabeth, Brown, ElizabethBrown@gmail.com),
-(3, Ali, S, Alis@gmail.com);
+(1, 'Colin', 'Mai', 'Colinmaisk@gmail.com'),
+(2, 'Elizabeth', 'Brown', 'ElizabethBrown@gmail.com'),
+(3, 'Ali', 'S', 'Alis@gmail.com');
 
 INSERT INTO projects (id, name, description,start_date, estimate_time, actual_time,user_id)
 VALUES
-(1, "),
-(),
-(),
-(),
-();
+(1, 'productivity project', 'google extension for productivity', '2020-06-06', 2592000, null, 1),
+(2, 'bitcoin project', 'bitcoin miner', '2020-05-01', 5000, 16000, 3),
+(3, 'data scraper', 'google extension for scraping company analytics', '2020-04-16', 22000, 15000, 2),
+(4, 'security project', 'hush hush', '2020-8-00', 2592000, null, 1),
+(5, 'interview takehome', 'job interview', '2020-07-01', 10000, null, 2);
 
 INSERT INTO whitelists (id, urls, project_id)
 VALUES
