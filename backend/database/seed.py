@@ -56,8 +56,8 @@ VALUES
 """)
 try:
     conn.commit()
-    print("inserted intotables successfully")
+    print("inserted into tables successfully")
 except:
-    print("tables created unsuccessfully")
+    print("tables not inserted successfully")
 
     

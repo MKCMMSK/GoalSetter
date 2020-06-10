@@ -58,12 +58,17 @@ CREATE TABLE sites
 (
     id INT PRIMARY KEY NOT NULL,
     url TEXT,
-    duration INTERVAL,
-    time_of_day TIMESTAMP,
-    productivity BOOLEAN,
     task_id INT REFERENCES tasks(id)
 
 );
+CREATE TABLE sessions
+(
+    id INT PRIMARY KEY NOT NULL,
+    duration INTERVAL,
+    time_of_day TIMESTAMP,
+    productivity BOOLEAN,
+    sites_id INT REFERENCES sites(id)
+)
 """)
 try:
     conn.commit()
