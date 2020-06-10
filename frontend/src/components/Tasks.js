@@ -1,5 +1,6 @@
 import React from 'react'
 import Board from 'react-trello'
+import Draggable from './Dragable';
 
 const data = {
   lanes: [
@@ -30,7 +31,9 @@ const data = {
 export default function Tasks() {
 
   return (
-      <Board data={data} draggable />
+    <Draggable>
+      <Board data={data} draggable/>
+    </Draggable>
   );
 
 }
