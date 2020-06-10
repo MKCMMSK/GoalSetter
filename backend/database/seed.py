@@ -38,6 +38,14 @@ VALUES
 (4, 'www.google.com', 3),
 (5, 'www.youtube.com', 2);
 
+INSERT INTO tasks (id, name, category, notes, start_date, estimate_time, actual_time, project_id)
+VALUES
+(1, 'research python', 'research', 'checkout freecodingacademy', '2020-06-06', '10:00:00', '10:00:00', 1),
+(2, 'check out linux academy','research', 'look for aws course', '2020-07-01', '03:00:00', '5:02:12', 2),
+(3, 'learn python','learning', 'check out django as well', '2020-06-07', '06:00:00', '08:00:00', 1),
+(4, 'complete hw','complete', 'take home interview assignment', '2020-07-01', '10:00:00' , '10:00:00', 5),
+(5, 'online shopping','other', 'break time', '2020-05-01', '00:06:00' , '00:07:00', 2);
+
 """)
 try:
     conn.commit()
