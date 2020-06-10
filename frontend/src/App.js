@@ -1,30 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-import Swipable from "./Swipable"
-import DragScroll from "./DragScroll"
-import Tasks from "./Tasks"
+//components
+import Swipable from "./components/Swipable"
+import Tasks from "./components/Tasks"
+import NavBar from "./components/Navigation"
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Swipable/>
-        <Tasks/>
+        <NavBar />
       </header>
+      <body className="App-body">
+        <Swipable className="App-component" />
+        <Tasks className="App-component" />
+      </body>
     </div>
   );
 }
