@@ -42,7 +42,7 @@ CREATE TABLE projects
 CREATE TABLE whitelists
 (
     id INT PRIMARY KEY NOT NULL,
-    urls VARCHAR(50) UNIQUE,
+    urls VARCHAR(50),
     project_id INT REFERENCES projects(id)
 );
 CREATE TABLE tasks
