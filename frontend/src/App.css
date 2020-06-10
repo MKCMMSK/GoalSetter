@@ -1,19 +1,15 @@
 .App {
+  display: flex;  
+  flex-flow: row wrap;
   text-align: center;
+  font-weight: bold;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App > * {
+  flex: 1 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
+.App-body {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -24,15 +20,15 @@
   color: white;
 }
 
+.dashboad-page {
+  display: flex;
+  /* flex-direction: column; */
+}
+
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media all and (min-width: 600px) {
+  .dashboad-page { flex: 1 0 0; }
 }
