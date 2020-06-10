@@ -2,7 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Swipable from "./swipable"
+import Swipable from "./Swipable"
+import DragScroll from "./DragScroll"
+import Tasks from "./Tasks"
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           Learn React
         </a>
         <Swipable/>
+        <Tasks/>
       </header>
     </div>
   );
