@@ -15,6 +15,7 @@ print("successful connection")
 
 cur = conn.cursor()
 cur.execute("""
+DROP TABLE IF EXISTS timeblocks;
 DROP TABLE IF EXISTS sessions;
 DROP TABLE IF EXISTS sites;
 DROP TABLE IF EXISTS tasks;
@@ -62,8 +63,6 @@ CREATE TABLE sites
     url TEXT,
     task_id INT REFERENCES tasks(id),
     unique(url,task_id)
-
-
 );
 CREATE TABLE sessions
 (
@@ -72,6 +71,14 @@ CREATE TABLE sessions
     time_of_day TIMESTAMP,
     productivity BOOLEAN,
     sites_id INT REFERENCES sites(id)
+);
+CREATE TABLE timeblocks
+(
+    id INT PRIMARY KEY NOT NULL,
+    date TIMESTAMP,
+    start_time TIMESTAMP,
+    end_time TIMESTAMP,
+    task_id INT REFERENCES tasks(id)
 )
 """)
 try:
