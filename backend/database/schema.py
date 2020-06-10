@@ -15,6 +15,7 @@ print("successful connection")
 
 cur = conn.cursor()
 cur.execute("""
+DROP TABLE IF EXISTS sessions;
 DROP TABLE IF EXISTS sites;
 DROP TABLE IF EXISTS tasks;
 DROP TABLE IF EXISTS whitelists;
@@ -35,12 +36,13 @@ CREATE TABLE projects
     description TEXT,
     start_date TIMESTAMP,
     estimate_time INTERVAL,
+    actual_time INTERVAL,
     user_id INT REFERENCES users(id)
 );
 CREATE TABLE whitelists
 (
     id INT PRIMARY KEY NOT NULL,
-    urls VARCHAR(50) UNIQUE,
+    urls VARCHAR(50),
     project_id INT REFERENCES projects(id)
 );
 CREATE TABLE tasks
@@ -58,7 +60,9 @@ CREATE TABLE sites
 (
     id INT PRIMARY KEY NOT NULL,
     url TEXT,
-    task_id INT REFERENCES tasks(id)
+    task_id INT REFERENCES tasks(id),
+    unique(url,task_id)
+
 
 );
 CREATE TABLE sessions
