@@ -60,7 +60,9 @@ CREATE TABLE sites
 (
     id INT PRIMARY KEY NOT NULL,
     url TEXT,
-    task_id INT REFERENCES tasks(id)
+    task_id INT REFERENCES tasks(id),
+    unique(url,task_id)
+
 
 );
 CREATE TABLE sessions

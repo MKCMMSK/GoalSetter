@@ -46,6 +46,21 @@ VALUES
 (4, 'complete hw','complete', 'take home interview assignment', '2020-07-01', '10:00:00' , '10:00:00', 5),
 (5, 'online shopping','other', 'break time', '2020-05-01', '00:06:00' , '00:07:00', 2);
 
+INSERT INTO sites (id, url, task_id)
+VALUES
+(1, 'www.google.ca', 1),
+(2, 'www.linuxAcademy.com', 1),
+(3, 'www.youtube.ca', 1),
+(4, 'www.justchiliing.ca', 2),
+(5, 'www.youtube.ca', 2);
+
+INSERT INTO sessions (id, duration, time_of_day, productivity, sites_id)
+VALUES
+(1, '00:00:30', '2020-06-06', 'TRUE',1),
+(2, '00:00:30', '2020-06-06', 'TRUE',2),
+(3, '00:00:30', '2020-06-06', 'TRUE',1),
+(4, '00:00:30', '2020-06-06', 'TRUE',2),
+(5, '00:00:30', '2020-06-06', 'TRUE',1);
 """)
 try:
     conn.commit()
