@@ -31,9 +31,12 @@ const data = {
 export default function Tasks() {
 
   return (
+    <>
     <Draggable>
       <Board data={data} draggable/>
     </Draggable>
+
+  </>
   );
 
 }

@@ -5,7 +5,6 @@
   font-weight: bold;
 }
 
-
 .App > * {
   flex: 1 100%;
 }
@@ -21,20 +20,15 @@
   color: white;
 }
 
-.App-component {
+.dashboad-page {
   display: flex;
-  flex-grow: 1;
+  /* flex-direction: column; */
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@media all and (min-width: 600px) {
+  .dashboad-page { flex: 1 0 0; }
 }
