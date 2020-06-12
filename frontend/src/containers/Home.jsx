@@ -1,10 +1,9 @@
 import React from 'react';
 
 //components
-import NavBar from "../components/NavBar"
-import Swipable from "../components/Swipable"
-import Tasks from "../components/Tasks"
-import MonthlyCalendar from "../components/Calendar"
+// import Swipable from "../components/Swipable"
+// import Tasks from "../components/Tasks"
+// import MonthlyCalendar from "../components/Calendar"
 import SessionList from "../components/SessionList"
 
 const sessions = [

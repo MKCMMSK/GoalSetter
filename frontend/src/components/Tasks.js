@@ -1,6 +1,6 @@
 import React from 'react'
 import Board from 'react-trello'
-import Draggable from './Dragable';
+// import Draggable from './Dragable';
 
 const data = {
   lanes: [
