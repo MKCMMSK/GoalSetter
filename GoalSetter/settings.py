@@ -40,10 +40,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'users',
     'projects',
-    'url_sessions',
-    'sites',
-    'tasks',
-    'whitelists'
 ]
 
 MIDDLEWARE = [
