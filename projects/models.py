@@ -15,7 +15,7 @@ class WhiteList(models.Model):
     project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
 
 
-class Tasks(models.Model):
+class Task(models.Model):
     name =models.TextField(max_length=30)
     category = models.TextField(max_length = 15)
     notes = models.TextField(max_length=255)
@@ -23,11 +23,17 @@ class Tasks(models.Model):
     estimate_time = models.DurationField
     actual_time = models.DurationField
     project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
+
+
+class Site(models.Model):
+    urls = models.CharField(max_length=30)
+    task_id = models.ForeignKey(Task, on_delete=models.CASCADE)
+    models.UniqueConstraint(fields=['urls', 'task_id'], name='unique_sites_per_task')
+
+class Session(models.Model):
     
-    # name VARCHAR(25) UNIQUE NOT NULL,
-    # category TEXT,
-    # notes TEXT,
-    # start_date TIMESTAMP,
-    # estimate_time INTERVAL,
-    # actual_time INTERVAL,
-    # project_id INT REFERENCES projects(id) 
+    duration = models.DurationField
+    time_of_day = models.DateField(auto_now=True)
+    productivity = models.BooleanField
+    sites_id = models.ForeignKey(Site, on_delete=models.CASCADE) 
+    
