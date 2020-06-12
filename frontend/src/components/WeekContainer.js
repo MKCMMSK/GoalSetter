@@ -2,7 +2,6 @@ import React from 'react';
 import SessionList from "./SessionListItem.js";
 import axios from "axios";
 
-
 function WeekContainer(sessions) {
     const { sessions } = props;
     const [state, setState] = useState({sessions:{}})
@@ -11,7 +10,6 @@ function WeekContainer(sessions) {
     let today = new Date();
     today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
 
-    
     const fetchData = () => {
         axios
             .get("/sessions").then((res) => {

@@ -32,9 +32,9 @@ export default function Tasks() {
 
   return (
     <>
-    <Draggable>
+    {/* <Draggable> */}
       <Board data={data} draggable/>
-    </Draggable>
+    {/* </Draggable> */}
 
   </>
   );

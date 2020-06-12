@@ -1,15 +1,21 @@
 import React from "react";
+import { BrowserRouter, Link } from 'react-router-dom';
+import Routes from '../Routes';
+
 
 import "./navBar.css"
 
 const NavBar = () => {
 
     return (
-        <ul className="navigation">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Username</a></li>
-        </ul>
+        <BrowserRouter>
+            <ul className="navigation">
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/project">Project</Link></li>
+                <li>Username</li>
+            </ul>
+            <Routes />
+        </BrowserRouter>
     )
 }
 
