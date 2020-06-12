@@ -30,13 +30,35 @@ const data = {
 
 export default function Tasks() {
 
+  const shouldReceiveNewData = nextData => {
+    console.log('Board has changed')
+    console.log(nextData)
+  }
+
+  const handleCardDelete = (cardId, laneId) => {
+    console.log(`Card: ${cardId} deleted from lane: ${laneId}`)
+  }
+
+  const handleCardAdd = (card, laneId) => {
+    console.log(`New card added to lane ${laneId}`)
+    console.log(card)
+  }
   return (
     <>
-    {/* <Draggable> */}
-      <Board data={data} draggable/>
-    {/* </Draggable> */}
-
-  </>
+      {/* <Draggable> */}
+      <Board
+        data={data}
+        draggable
+        editable
+        canAddLanes 
+        addLaneTitle="NEW LANE"
+        addCardLink="ADD CARD"
+        onDataChange={shouldReceiveNewData}
+        onCardDelete={handleCardDelete}
+        onCardAdd={handleCardAdd}
+        />
+      {/* </Draggable> */}
+    </>
   );
 
 }
