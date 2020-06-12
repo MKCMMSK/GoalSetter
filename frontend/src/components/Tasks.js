@@ -50,12 +50,16 @@ export default function Tasks() {
         data={data}
         draggable
         editable
-        canAddLanes 
+        canAddLanes
+        editLaneTitle
         addLaneTitle="NEW LANE"
         addCardLink="ADD CARD"
         onDataChange={shouldReceiveNewData}
         onCardDelete={handleCardDelete}
         onCardAdd={handleCardAdd}
+        onLaneAdd={t => console.log('You added a line with title ' + t.title)}
+        onLaneClick={t => console.log('You clicked on a lane')}
+        onLaneUpdate={ (laneId, data) => console.log(`onLaneUpdate: ${laneId} -> ${data.title}`)}
         />
       {/* </Draggable> */}
     </>
