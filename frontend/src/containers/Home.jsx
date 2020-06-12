@@ -24,11 +24,6 @@ const Home = () => {
         <SessionList sessions={sessions} />
         {/* <Swipable  /> */}
       </section>
-
-      <h1>Project Page</h1>
-      <section className="project-page">
-        <Tasks />
-      </section>
     </>
   );
 };
