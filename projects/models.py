@@ -8,11 +8,11 @@ class Project(models.Model):
     start_date = models.DateField(auto_now=True)
     estimate_time = models.DurationField
     actual_time = models.DurationField
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class WhiteList(models.Model):
     urls = models.CharField(max_length=30)
-    project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
 
 class Task(models.Model):
@@ -22,12 +22,12 @@ class Task(models.Model):
     start_date = models.DateField(auto_now=True)    
     estimate_time = models.DurationField
     actual_time = models.DurationField
-    project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
 
 class Site(models.Model):
     urls = models.CharField(max_length=30)
-    task_id = models.ForeignKey(Task, on_delete=models.CASCADE)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
     models.UniqueConstraint(fields=['urls', 'task_id'], name='unique_sites_per_task')
 
 class Session(models.Model):
@@ -35,5 +35,5 @@ class Session(models.Model):
     duration = models.DurationField
     time_of_day = models.DateField(auto_now=True)
     productivity = models.BooleanField
-    sites_id = models.ForeignKey(Site, on_delete=models.CASCADE) 
+    sites = models.ForeignKey(Site, on_delete=models.CASCADE) 
     
