@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import urllib.parse as up
+from dotenv import load_dotenv
+load_dotenv()
 
+url = up.urlparse(os.environ["DATABASE_URL"])
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -78,8 +82,12 @@ WSGI_APPLICATION = 'GoalSetter.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': url.username,
+        'USER': url.username,
+        'PASSWORD' : url.password,
+        'HOST' : url.hostname,
+        'PORT' : url.port
     }
 }
 
