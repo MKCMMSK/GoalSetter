@@ -10,11 +10,6 @@ class Project(models.Model):
     actual_time = models.DurationField
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-# class Site(models.Model):
-#     urls = models.CharField(max_length=30)
-#     task = models.ForeignKey(Task, on_delete=models.CASCADE)
-#     models.UniqueConstraint(fields=['urls', 'task_id'], name='unique_sites_per_task')
-
 # class Session(models.Model):
     
 #     duration = models.DurationField
