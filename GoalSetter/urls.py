@@ -8,5 +8,5 @@ urlpatterns = [
     path('crud/', include('whitelists.urls')),
     path('crud/', include('tasks.urls')),
     path('crud/', include('sites.urls')),
-    # path('crud/', include('urlsessions.urls'))
+    path('crud/', include('urlsessions.urls'))
 ]
