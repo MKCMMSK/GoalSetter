@@ -6,7 +6,7 @@ urlpatterns = [
     path('crud/', include('users.urls')),
     path('crud/', include('projects.urls')),
     path('crud/', include('whitelists.urls')),
-    # path('crud/', include('tasks.urls')),
-    # path('crud/', include('sites.urls')),
+    path('crud/', include('tasks.urls')),
+    path('crud/', include('sites.urls')),
     # path('crud/', include('urlsessions.urls'))
 ]
