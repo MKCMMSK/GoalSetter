@@ -66,3 +66,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### Appendix Notes
+
+-Use react-trello v2.2.2 to prevent add lane wrror in v2.2.6 

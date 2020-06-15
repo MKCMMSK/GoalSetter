@@ -1,13 +1,18 @@
 import React from 'react';
+
+import {PageLayout} from '../components/PageLayout';
 import Tasks from "../components/Tasks"
 
 const Project = () => (
-  <div>
-    <h2>Project Page</h2>
+  <PageLayout>
+    <header>
+      <h1>Project Page</h1>
+    </header>
+
     <section className="project-page">
-        <Tasks />
-      </section>
-  </div>
+      <Tasks />
+    </section>
+  </PageLayout>
 );
 
 export default Project;

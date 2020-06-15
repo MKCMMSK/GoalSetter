@@ -1,10 +1,10 @@
 import React from 'react';
+import {PageLayout} from '../components/PageLayout';
 
 //components
-import NavBar from "../components/NavBar"
-import Swipable from "../components/Swipable"
-import Tasks from "../components/Tasks"
-import MonthlyCalendar from "../components/Calendar"
+// import Swipable from "../components/Swipable"
+// import Tasks from "../components/Tasks"
+// import MonthlyCalendar from "../components/Calendar"
 import SessionList from "../components/SessionList"
 
 const sessions = [
@@ -17,14 +17,17 @@ const sessions = [
 
 const Home = () => {
   return (
-    <>
-      <h1>Dashboad Page</h1>
+    <PageLayout>
+      <header>
+        <h1>Dashboad Page</h1>
+      </header>
+      
       <section className="dashboad-page">
         {/* <MonthlyCalendar /> */}
         <SessionList sessions={sessions} />
         {/* <Swipable  /> */}
       </section>
-    </>
+    </PageLayout>
   );
 };
 

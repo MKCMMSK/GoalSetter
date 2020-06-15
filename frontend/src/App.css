@@ -22,6 +22,7 @@
 
 .dashboad-page {
   display: flex;
+  /* width: 50%; */
   /* flex-direction: column; */
 }
 
@@ -32,3 +33,5 @@
 @media all and (min-width: 600px) {
   .dashboad-page { flex: 1 0 0; }
 }
+
+
