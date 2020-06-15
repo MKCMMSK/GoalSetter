@@ -12,7 +12,8 @@
     "react-scripts": "3.4.1",
     "react-swipeable": "^5.5.1",
     "react-swipeable-views": "^0.13.9",
-    "react-trello": "^2.2.2"
+    "react-trello": "^2.2.2",
+    "styled-components": "^5.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
