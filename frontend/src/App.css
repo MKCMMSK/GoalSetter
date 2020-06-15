@@ -1,0 +1,37 @@
+.App {
+  display: flex;  
+  flex-flow: row wrap;
+  text-align: center;
+  font-weight: bold;
+}
+
+.App > * {
+  flex: 1 100%;
+}
+
+.App-body {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.dashboad-page {
+  display: flex;
+  /* width: 50%; */
+  /* flex-direction: column; */
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@media all and (min-width: 600px) {
+  .dashboad-page { flex: 1 0 0; }
+}
+
+
