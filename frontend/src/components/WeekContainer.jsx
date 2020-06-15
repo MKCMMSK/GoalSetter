@@ -1,12 +1,12 @@
 import React from 'react';
-import SessionList from "./SessionListItem.js";
+import SessionList from "./SessionListItem.jsx";
 import axios from "axios";
 
 function WeekContainer(sessions) {
     const { sessions } = props;
     const [state, setState] = useState({sessions:{}})
 
-    //format date to be similar to db 2020-06-06
+    //format date to be similar to db 2020-06-06    => 2020-06-03 to 2020-06-09
     let today = new Date();
     today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
 

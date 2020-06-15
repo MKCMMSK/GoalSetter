@@ -1,4 +1,5 @@
 import React from 'react';
+import {PageLayout} from '../components/PageLayout';
 
 //components
 // import Swipable from "../components/Swipable"
@@ -16,7 +17,7 @@ const sessions = [
 
 const Home = () => {
   return (
-    <>
+    <PageLayout>
       <header>
         <h1>Dashboad Page</h1>
       </header>
@@ -26,7 +27,7 @@ const Home = () => {
         <SessionList sessions={sessions} />
         {/* <Swipable  /> */}
       </section>
-    </>
+    </PageLayout>
   );
 };
 

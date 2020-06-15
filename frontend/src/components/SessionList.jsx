@@ -1,5 +1,5 @@
 import React from "react";
-import SessionListItem from "./SessionListItem.js";
+import SessionListItem from "./SessionListItem.jsx";
 
 export default function SessionList(props) {
     const { sessions } = props;
