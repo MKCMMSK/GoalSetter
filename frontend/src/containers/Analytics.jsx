@@ -1,4 +1,7 @@
 import React from 'react';
+import {PageLayout} from '../components/PageLayout';
+
+
 import BarLineChart from "../components/BarLineChart"
 import PieGraph from "../components/PieGraph"
 
@@ -11,7 +14,7 @@ const weeklyHoursOnline = [7, 4, 2, 6, 12, 4, 5]
 const projectHours = [4, 2, 6, 1, 4, 5, 3]
 
 const Analytics = () => (
-  <>
+  <PageLayout>
     <header>
       <h1>Analytics Page</h1>
     </header>
@@ -20,7 +23,7 @@ const Analytics = () => (
       <BarLineChart weeklyHoursOnline={weeklyHoursOnline} projectHours={projectHours} />
       <PieGraph productivity={productivity} />
     </section>
-  </>
+  </PageLayout>
 );
 
 export default Analytics;
