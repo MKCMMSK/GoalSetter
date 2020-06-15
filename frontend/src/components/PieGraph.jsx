@@ -1,10 +1,11 @@
 import React from "react";
 import { Chart } from '@bit/primefaces.primereact.chart';
 
-const PieGraph = ({productivity} = props) => {
+const PieGraph = (props) => {
+const {productivity} = props;
 
   const data = {
-    labels: ['A', 'B', 'C'],
+    labels: ['Hours Productive', 'Neutral/Unknown', 'Hours Unproductive'],
     datasets: [
       {
         data: productivity,

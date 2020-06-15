@@ -1,7 +1,8 @@
 import React from "react";
 import { Chart } from '@bit/primefaces.primereact.chart';
 
-const PieGraph = ({ weeklyHours, projectHours } = props) => {
+const BarLineChart = (props) => {
+  const { weeklyHoursOnline, projectHours } = props;
 //TODO map func for >1 project
   const data = {
     labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
@@ -12,7 +13,7 @@ const PieGraph = ({ weeklyHours, projectHours } = props) => {
         borderColor: '#2196F3',
         borderWidth: 2,
         fill: false,
-        data: weeklyHours
+        data: weeklyHoursOnline
       },
       {
         type: 'bar',
@@ -44,4 +45,4 @@ const PieGraph = ({ weeklyHours, projectHours } = props) => {
   )
 }
 
-export default PieGraph
+export default BarLineChart
