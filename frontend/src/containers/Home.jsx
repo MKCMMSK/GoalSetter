@@ -17,7 +17,10 @@ const sessions = [
 const Home = () => {
   return (
     <>
-      <h1>Dashboad Page</h1>
+      <header>
+        <h1>Dashboad Page</h1>
+      </header>
+      
       <section className="dashboad-page">
         {/* <MonthlyCalendar /> */}
         <SessionList sessions={sessions} />
