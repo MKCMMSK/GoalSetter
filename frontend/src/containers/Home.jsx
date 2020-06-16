@@ -1,7 +1,8 @@
-import React from 'react';
-import {PageLayout} from '../components/PageLayout';
+import React, { useState, useEffect } from "react"
+import axios from "axios"
 
 //components
+import {PageLayout} from '../components/PageLayout';
 // import Swipable from "../components/Swipable"
 // import Tasks from "../components/Tasks"
 // import MonthlyCalendar from "../components/Calendar"
@@ -15,7 +16,20 @@ const sessions = [
   { id: 5, duration: '00:30:30', time_of_day: '2020-06-07', productivity: 'FALSE', site_id: 1 }
 ]
 
-const Home = () => {
+const HomePage = () => {
+  const [state, setState] = useState({});
+
+  const fetchData = (
+    axios
+      .get(`localhost:8000/sessions/${user_id}`)
+      .then(data => setState(data))
+      .catch(error => console.log(error))
+  )
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
   return (
     <PageLayout>
       <header>
@@ -31,4 +45,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
