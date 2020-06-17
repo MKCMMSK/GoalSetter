@@ -2,7 +2,7 @@
   "name": "GoalSetter",
   "version": "1.0",
   "description": "",
-  "permissions": ["activeTab", "declarativeContent"],
+  "permissions": ["activeTab", "declarativeContent", "tabs"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
