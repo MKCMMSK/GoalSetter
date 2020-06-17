@@ -1,9 +1,15 @@
+html {
+    border-radius: 50px;
+}
+
 body {
     width: 200px;
-    height: 300px;
+    display: flex;
+    flex-direction: column;
 }
 
 .toggle-switch {
+    cursor: pointer;
     position: relative;
     display: inline-block;
     width: 60px;
@@ -50,4 +56,39 @@ input:checked + .slider:before {
 
 input:checked + .slider {
     background-color: #455BED;
+}
+
+.settings {
+    height: 30px;
+    width: 30px;
+    align-self: right;
+    cursor: pointer;
+}
+
+.horizontal-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.current-task {
+    align-self: center;
+    font-size: 18px;
+    padding: 5px;
+    padding-top: 40px;
+    cursor: pointer;
+}
+
+.time {
+    align-self: center;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.more {
+    align-self: flex-end;
+    font-size: 24px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    cursor: pointer;
 }
