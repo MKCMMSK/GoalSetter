@@ -1,19 +1,29 @@
 const toggleSwitch = document.getElementById('toggle');
 
-let activeTabId = null;
-let activeWindowId = null;
+// chrome.tabs.remove(id) will close a tab by tabId.
 
-
-
-toggleSwitch.addEventListener((e) => {
-
-});
+// toggleSwitch.addEventListener('change', () => {
+//     if (this.checked) startMonitoring();
+//     else stopMonitoring();
+// });
 
 const startMonitoring = () => {
-    chrome.tabs.onActivated.addListener((tab) => {
-        activeTabID = tab.tabId;
-        activeWindowId = tab.windowId;
-    })
+    // When a tab is created, clicked on,
+    //  or otherwise becomes active.
+    chrome.tabs.onActivated.addListener((activeInfo) => {
+        activeTabID = activeInfo.tabId;
+        activeWindowId = activeInfo.windowId;
+        console.log(activeTabID);
+        console.log(activeWindowId);
+    });
+
+    // When any tab is updated, not neccesarily
+    //  a tab the user is viewing.
+    chrome.tabs.onUpdated.addListener(
+        (tabId, changeInfo, tab) => {
+
+        }
+    );
 };
 
 const endMonitoring = () => {

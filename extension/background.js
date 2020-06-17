@@ -6,3 +6,19 @@ chrome.runtime.onInstalled.addListener(function () {
     }]);
   });
 });
+
+let activeTabId = null;
+let activeWindowId = null;
+
+chrome.runtime.onMessage.addListener(
+  (request, sender, response) => {
+    console.log(sender.tab);
+  }
+);
+
+/*
+useful tab keys:
+  bool  active
+  bool  audible
+  int   id
+*/
