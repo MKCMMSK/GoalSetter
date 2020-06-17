@@ -2,11 +2,17 @@
   "name": "GoalSetter",
   "version": "1.0",
   "description": "",
-  "permissions": ["activeTab", "declarativeContent"],
+  "permissions": ["activeTab", "declarativeContent", "tabs"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches": [ "<all_urls>" ],
+      "js": [ "content.js" ]
+    }
+  ],
   "page_action": {
     "default_popup": "popup.html"
   },
