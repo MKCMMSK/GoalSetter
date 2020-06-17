@@ -9,7 +9,7 @@ let tabName = document.title;
 // This runs anew on each page.  This means we
 //  can just shunt the two values to background.js
 //  using messages.
-chrome.runtime.sendMessage({greeting: "hello"}, (response) => {
+chrome.runtime.sendMessage({}, (response) => {
     alert(response.farewell);
 });
 

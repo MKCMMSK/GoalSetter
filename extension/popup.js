@@ -7,6 +7,11 @@ const toggleSwitch = document.getElementById('toggle');
 //     else stopMonitoring();
 // });
 
+
+// ************************
+// This is all garbage now.
+// ************************
+
 const startMonitoring = () => {
     // When a tab is created, clicked on,
     //  or otherwise becomes active.
