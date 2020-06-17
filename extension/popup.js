@@ -6,6 +6,11 @@ const clock = document.getElementsByClassName('time')[0];
 let startTime = null;
 let timerInterval = null;
 
+// We need to force a load screen until this completes.
+chrome.runtime.sendMessage({
+    action: "getStatus"
+}, (response) => {});
+
 
 // chrome.tabs.remove(id) will close a tab by tabId.
 
@@ -25,7 +30,11 @@ toggleSwitch.addEventListener('change', () => {
     }
 });
 
+
 const startMonitoring = () => {
+    chrome.runtime.sendMessage({
+        action: "startWork"
+    }, (response) => {});
     startTime = Date.now();
     // This suffers from drift, low priority,
     //  but is fixable later.
@@ -37,6 +46,9 @@ const startMonitoring = () => {
 };
 
 const stopMonitoring = () => {
+    chrome.runtime.stopMessage({
+        action: "stopWork"
+    }, (response) => {});
     clearInterval(timerInterval);
 };
 
