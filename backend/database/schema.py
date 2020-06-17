@@ -62,7 +62,6 @@ CREATE TABLE sites
     time_of_day TIMESTAMP,
     productivity BOOLEAN,
     task_id INT REFERENCES tasks(id)
-
 );
 """)
 try:
