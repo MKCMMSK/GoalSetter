@@ -10,6 +10,8 @@ chrome.runtime.onInstalled.addListener(function () {
 let activeTabId = null;
 let activeWindowId = null;
 
+let timer = 0;
+
 chrome.runtime.onMessage.addListener(
   (request, sender, response) => {
     // Do we even need to track these with the
@@ -37,6 +39,8 @@ chrome.tabs.onActivated.addListener(
   tab => {
     console.log(tab);
     chrome.tabs.get(tab.tabId, tab => {
+      activeTabId = sender.tab.id;
+      activeWindowId = sender.tab.windowId;
       console.log(
         `You have changed tabs:
         windowId: ${tab.windowId}
@@ -47,6 +51,7 @@ chrome.tabs.onActivated.addListener(
     });
   }
 );
+
 /*
 useful tab keys:
   bool    active

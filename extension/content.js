@@ -4,15 +4,12 @@
 //  content the current page is.
 
 // Just start with tab name and URL.
-let URL = document.URL;
-let tabName = document.title;
+// let URL = document.URL;
+// let tabName = document.title;
 // This runs anew on each page.  This means we
 //  can just shunt the two values to background.js
 //  using messages.
-chrome.runtime.sendMessage({}, (response) => {
-    alert(response.farewell);
-});
-
+chrome.runtime.sendMessage({}, (response) => {});
 
 // Trigger alerts based on what user is doing.
 // Will have to send messages from background
