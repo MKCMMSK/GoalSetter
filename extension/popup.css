@@ -1,6 +1,11 @@
+body {
+    width: 200px;
+    height: 300px;
+}
+
 .toggle-switch {
     position: relative;
-    display: block;
+    display: inline-block;
     width: 60px;
     height: 34px;
 }
@@ -36,6 +41,7 @@
     bottom: 3px;
     background-color: white;
     transition: .4s;
+    border-radius: 50px;
 }
 
 input:checked + .slider:before {
@@ -44,8 +50,4 @@ input:checked + .slider:before {
 
 input:checked + .slider {
     background-color: #455BED;
-}
-
-.slider:before {
-    border-radius: 50px;
 }
