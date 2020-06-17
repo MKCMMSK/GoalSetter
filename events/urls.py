@@ -1,6 +1,6 @@
 from rest_framework import routers
-from .api import SiteViewSet
+from .api import EventViewSet
 
 router = routers.DefaultRouter()
-router.register('api/sites', SiteViewSet, 'sites')
+router.register('api/events', EventViewSet, 'events')
 urlpatterns = router.urls
