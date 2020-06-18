@@ -2,19 +2,21 @@
 <html>
 
 <head>
-  <style>
-
-  </style>
+  <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
-  <button>Toggle</button>
-  <button>Settings</button>
-  <div>Current Task</div>
-  <div>Time</div>
-  <button>View More</button>
+  <div class="horizontal-flex">
+    <label class="toggle-switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+    <img class="settings" src="assets/cog.png">
+  </div>
+  <div class="current-task">Current Task</div>
+  <div class="time">01:02:07</div>
+  <p class="more">&#8628;</p>
   <script src="popup.js"></script>
-
 </body>
 
 </html>

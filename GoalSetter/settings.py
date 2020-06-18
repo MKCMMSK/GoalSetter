@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'users',
     'projects',
     'urlsessions',
-    'sites',
+    'events',
     'tasks',
     'whitelists'
 ]

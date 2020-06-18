@@ -3,10 +3,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', admin.site.urls),
-    path('crud/', include('users.urls')),
-    path('crud/', include('projects.urls')),
-    path('crud/', include('whitelists.urls')),
-    path('crud/', include('tasks.urls')),
-    path('crud/', include('sites.urls')),
-    path('crud/', include('urlsessions.urls'))
+    path('', include('users.urls')),
+    path('', include('projects.urls')),
+    path('', include('whitelists.urls')),
+    path('', include('tasks.urls')),
+    path('', include('events.urls')),
+    path('', include('urlsessions.urls'))
 ]
