@@ -1,7 +1,7 @@
 from rest_framework import routers
-from .api import SessionViewSet
+from .api import URLSessionViewSet
 
 router = routers.DefaultRouter()
-router.register('api/sessions', SessionViewSet, 'session')
+router.register('api/urlsessions', URLSessionViewSet, 'session')
 
 urlpatterns = router.urls

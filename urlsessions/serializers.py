@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from urlsessions.models import Session
+from urlsessions.models import URLSession
 
-class SessionSerializer(serializers.ModelSerializer):
+class URLSessionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Session
+        model = URLSession
         fields = '__all__'

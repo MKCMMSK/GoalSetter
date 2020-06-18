@@ -9,11 +9,3 @@ class Project(models.Model):
     estimate_time = models.DurationField
     actual_time = models.DurationField
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
-# class Session(models.Model):
-    
-#     duration = models.DurationField
-#     time_of_day = models.DateField(auto_now=True)
-#     productivity = models.BooleanField
-#     sites = models.ForeignKey(Site, on_delete=models.CASCADE) 
-
