@@ -1,10 +1,10 @@
-from urlsessions.models import Session
+from urlsessions.models import URLSession
 from rest_framework import viewsets, permissions
-from .serializers import SessionSerializer
+from .serializers import URLSessionSerializer
 
-class SessionViewSet(viewsets.ModelViewSet):
-    queryset = Session.objects.all()
+class URLSessionViewSet(viewsets.ModelViewSet):
+    queryset = URLSession.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
-    serializer_class = SessionSerializer
+    serializer_class = URLSessionSerializer
