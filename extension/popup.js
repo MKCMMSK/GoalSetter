@@ -10,7 +10,12 @@ let timer = null;
 chrome.runtime.sendMessage({
     action: "getStatus"
 }, (response) => {
-
+    if (response.startTime !== null) {
+        // Setting the value like this will not trigger
+        //  change event.
+        checkBox.checked = true;
+        startTimer(response.startTime);
+    }
 });
 
 

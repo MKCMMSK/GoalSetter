@@ -41,8 +41,9 @@ chrome.runtime.onMessage.addListener(
     } else if (request.action === "stopWork") {
       startTime = null;
       response();
+    } else if (request.action === "getStatus") {
+      response({startTime: startTime});
     }
-    
   }
 );
 
