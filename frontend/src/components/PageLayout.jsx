@@ -14,7 +14,7 @@ const Content = styled.main`
     }
 `;
 
-export function PageLayout({children}){
+export default function PageLayout({children}){
     return (
         <>
             <NavBar />
