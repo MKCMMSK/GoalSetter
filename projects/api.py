@@ -5,11 +5,10 @@ from .serializers import ProjectSerializer
 
 # Lead Viewset
 class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
+    user = User.objects.get(id=1)
+    queryset = user.project_set.all()
     permission_classes = [
         permissions.AllowAny
     ]
     serializer_class = ProjectSerializer
 
-# user = User.objects.get(id=currentUserPk)
-# queryset = user.project_set.all()
