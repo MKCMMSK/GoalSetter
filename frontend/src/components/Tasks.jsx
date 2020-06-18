@@ -35,7 +35,7 @@ export default function Tasks() {
 
   // const fetchData = (
     // axios
-    //   .get(`localhost:8000/sessions/${userId}`)
+    //   .get(`localhost:8000/projects/${userId}`)
     //   .then(data => setState(data))
     //   .catch(error => console.log(error))
   // )
@@ -43,7 +43,7 @@ export default function Tasks() {
   const handleCardDelete = (cardId, laneId) => {
     console.log(`Card: ${cardId} deleted from lane: ${laneId}`)
     // axios
-    //   .delete(`localhost:8000/sessions/${cardId}`)
+    //   .delete(`localhost:8000/projects/${cardId}`)
     //   .catch(error => console.log(error))
 
     // const project = state.find(id => id = laneId)
@@ -54,7 +54,7 @@ export default function Tasks() {
   const handleCardAdd = (card, laneId) => {
     console.log(`New card added to lane ${laneId}: ${card}`)
     // axios
-    //   .put(`localhost:8000/sessions/${card}`)
+    //   .put(`localhost:8000/projects/${card}`)
     //   .catch(error => console.log(error))
 
     // const project = state.map(() => {})
@@ -83,7 +83,7 @@ export default function Tasks() {
       <div>test</div>
     )
      // axios
-    //   .put(`localhost:8000/sessions/${cardId}`)
+    //   .put(`localhost:8000/projects/${cardId}`)
     //   .catch(error => console.log(error))
 
     // const project = state.find(id => id = laneId)
