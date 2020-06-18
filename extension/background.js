@@ -20,6 +20,7 @@ chrome.runtime.onMessage.addListener(
     //  data is sent AFTER new pages load, but
     //  on old tabs, this data should all be there 
     //  and up to date.
+    // MESSAGE FROM TAB
     if (sender.tab) {
       activeTabId = sender.tab.id;
       activeWindowId = sender.tab.windowId;
@@ -31,6 +32,15 @@ chrome.runtime.onMessage.addListener(
         tabName: ${sender.tab.title}
         tabUrl: ${sender.tab.url}`
       );
+    }
+    // MESSAGES FROM EXTENSION
+
+    if (request.action === "startWork") {
+      startTime = Date.now();
+      response({startTime: startTime});
+    } else if (request.action === "stopWork") {
+      startTime = null;
+      response();
     }
     
   }

@@ -4,12 +4,14 @@ const checkBox = document.getElementById('toggle-check');
 const clock = document.getElementsByClassName('time')[0];
 
 let startTime = null;
-let timerInterval = null;
+let timer = null;
 
 // We need to force a load screen until this completes.
 chrome.runtime.sendMessage({
     action: "getStatus"
-}, (response) => {});
+}, (response) => {
+
+});
 
 
 // chrome.tabs.remove(id) will close a tab by tabId.
@@ -34,23 +36,30 @@ toggleSwitch.addEventListener('change', () => {
 const startMonitoring = () => {
     chrome.runtime.sendMessage({
         action: "startWork"
-    }, (response) => {});
-    startTime = Date.now();
-    // This suffers from drift, low priority,
-    //  but is fixable later.
-    timerInterval = setInterval(() => {
-        let nextTime = 
-            msToTime(Date.now() - startTime);
-        clock.textContent = nextTime;
-    }, 1000);
+    }, (response) => {
+        startTimer(response.startTime);
+    });
 };
 
 const stopMonitoring = () => {
-    chrome.runtime.stopMessage({
+    chrome.runtime.sendMessage({
         action: "stopWork"
-    }, (response) => {});
-    clearInterval(timerInterval);
+    }, () => {
+        clearInterval(timer);
+    });
 };
+
+// This suffers from drift, low priority,
+//  but is fixable later.
+const startTimer = (startTime) => {
+    this.startTime = startTime;
+
+    timer = setInterval(() => {
+        let nextTime = 
+            msToTime(Date.now() - this.startTime);
+        clock.textContent = nextTime;
+    }, 1000);
+}
 
 const msToTime = (duration) => {
     let milliseconds = parseInt((duration%1000)/100)
