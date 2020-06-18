@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
+// import axios from "axios"
 
 //components
-import { PageLayout } from '../components/PageLayout';
+import PageLayout from '../components/PageLayout';
 import BarLineChart from "../components/BarLineChart"
 import PieGraph from "../components/PieGraph"
 
@@ -18,15 +18,15 @@ const AnalyticsPage = () => {
 
   const [state, setState] = useState({});
 
-  const fetchData = (
-    axios
-      .get(`localhost:8000/events/${user.id}`)
-      .then(data => setState(data))
-      .catch(error => console.log(error))
-  )
+  // const fetchData = (
+    // axios
+    //   .get(`localhost:8000/events/${user.id}`)
+    //   .then(data => setState(data))
+    //   .catch(error => console.log(error))
+  // )
 
   useEffect(() => {
-    fetchData()
+    // fetchData()
   }, [])
 
   return (

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
+// import axios from "axios"
 
 //components
-import {PageLayout} from '../components/PageLayout';
+import PageLayout from '../components/PageLayout';
 // import Swipable from "../components/Swipable"
 // import Tasks from "../components/Tasks"
 // import MonthlyCalendar from "../components/Calendar"
@@ -17,18 +17,18 @@ const sessions = [
 ]
 
 const ProjectPage = () => {
-  const [state, setState] = useState({});
+  // const [state, setState] = useState({});
 
-  const fetchData = (
-    axios
-      .get(`localhost:8000/sessions/${user_id}`)
-      .then(data => setState(data))
-      .catch(error => console.log(error))
-  )
+  // const fetchData = (
+  //   axios
+  //     .get(`localhost:8000/sessions/${userId}`)
+  //     .then(data => setState(data))
+  //     .catch(error => console.log(error))
+  // )
 
-  useEffect(() => {
-    fetchData()
-  }, [])
+  // useEffect(() => {
+  //   fetchData()
+  // }, [])
 
   return (
     <PageLayout>

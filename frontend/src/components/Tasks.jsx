@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from "react"
 import Board from 'react-trello'
 // import Draggable from './Dragable';
+// import axios from "axios"
 
-const data = {
+const mockData = {
   lanes: [
     {
       id: 'lane1',
@@ -29,38 +30,93 @@ const data = {
 }
 
 export default function Tasks() {
+  const [state, setState] = useState(mockData);
+  // const [state, setState] = useState({});
 
-  const shouldReceiveNewData = nextData => {
-    console.log('Board has changed')
-    console.log(nextData)
-  }
+  // const fetchData = (
+    // axios
+    //   .get(`localhost:8000/sessions/${userId}`)
+    //   .then(data => setState(data))
+    //   .catch(error => console.log(error))
+  // )
 
   const handleCardDelete = (cardId, laneId) => {
     console.log(`Card: ${cardId} deleted from lane: ${laneId}`)
+    // axios
+    //   .delete(`localhost:8000/sessions/${cardId}`)
+    //   .catch(error => console.log(error))
+
+    // const project = state.find(id => id = laneId)
+    // project.cards.pop(card)
+    // setState(...state, project)
   }
 
   const handleCardAdd = (card, laneId) => {
-    console.log(`New card added to lane ${laneId}`)
-    console.log(card)
+    console.log(`New card added to lane ${laneId}: ${card}`)
+    // axios
+    //   .put(`localhost:8000/sessions/${card}`)
+    //   .catch(error => console.log(error))
+
+    // const project = state.map(() => {})
+    // const project = state.find(id => id = laneId)
+    // project.cards.push(card)
+    // setState(...state, project)
   }
+
+  const shouldReceiveNewData = nextData => {
+    console.log('Board has changed')
+    console.log(nextData) //ALL DATA
+    // setState(...state, nextData)
+  }
+
+  const onLaneUpdate = (laneId, data) => {
+    console.log(`Card updated on lane ${laneId}: ${data}`)
+    // const project = state.find(id => id = laneId)
+    // project.push(data)
+    // setState(...state, project)
+  }
+
+  const onCardEdit = (cardId, metadata, laneId) => {
+    console.log(`Card updated on lane `)
+    
+    return (
+      <div>test</div>
+    )
+     // axios
+    //   .put(`localhost:8000/sessions/${cardId}`)
+    //   .catch(error => console.log(error))
+
+    // const project = state.find(id => id = laneId)
+    // project.push(data)
+    // setState(...state, project)
+  }
+
+
+  useEffect(() => {
+    // fetchData()
+  }, [])
+
   return (
     <>
       {/* <Draggable> */}
       <Board
-        data={data}
+        style={{backgroundColor: '#A8D0E6'}}
+        data={state}
         draggable
         editable
         canAddLanes
         editLaneTitle
         addLaneTitle="NEW LANE"
-        addCardLink="ADD CARD"
+        // addCardLink="ADD CARD"
         onDataChange={shouldReceiveNewData}
         onCardDelete={handleCardDelete}
         onCardAdd={handleCardAdd}
         onLaneAdd={t => console.log('You added a line with title ' + t.title)}
         onLaneClick={t => console.log('You clicked on a lane')}
-        onLaneUpdate={ (laneId, data) => console.log(`onLaneUpdate: ${laneId} -> ${data.title}`)}
-        />
+        onCardClick={onCardEdit}
+        onLaneUpdate={onLaneUpdate}
+      // onLaneUpdate={(laneId, data) => console.log(`onLaneUpdate: ${laneId} -> ${data.title}`)}
+      />
       {/* </Draggable> */}
     </>
   );
