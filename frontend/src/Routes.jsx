@@ -5,8 +5,8 @@ import { Home, Project, Analytics } from './containers';
 const Routes = () => (
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route path="/Project" component={Project} />
-    <Route path="/Analytics" component={Analytics} />
+    <Route exact path="/project" component={Project} />
+    <Route exact path="/analytics" component={Analytics} />
   </Switch>
 );
 
