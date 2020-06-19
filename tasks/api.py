@@ -2,7 +2,7 @@ from tasks.models import Task
 from rest_framework import viewsets, permissions
 from .serializers import TaskSerializer
 from projects.models import Project
-from django.http import HttpRequest
+from django.http import HttpResponse
 # Task Viewset
 class TaskViewSet(viewsets.ModelViewSet):
     
