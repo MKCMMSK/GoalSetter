@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react"
 import PageLayout from '../components/PageLayout';
 // import Swipable from "../components/Swipable"
 // import Tasks from "../components/Tasks"
-// import MonthlyCalendar from "../components/Calendar"
+import MonthlyCalendar from "../components/Calendar"
 // import SessionList from "../components/SessionList"
 import WeekTaskView from "../components/WeekTaskView"
 
@@ -38,7 +38,7 @@ const ProjectPage = () => {
       </header>
       
       <section className="dashboad-page">
-        {/* <MonthlyCalendar /> */}
+        <MonthlyCalendar />
         {/* <SessionList sessions={sessions} /> */}
         <WeekTaskView/>
         {/* <Swipable  /> */}
