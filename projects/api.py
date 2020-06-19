@@ -2,7 +2,7 @@ from projects.models import Project
 from users.models import User
 from rest_framework import viewsets, permissions
 from .serializers import ProjectSerializer
-from django.http import request
+from rest_framework import request
 
 # Lead Viewset
 class ProjectViewSet(viewsets.ModelViewSet):
