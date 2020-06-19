@@ -17,7 +17,7 @@ const Content = styled.main`
 export default function PageLayout({children}){
     return (
         <>
-            <NavBar />
+            {/* <NavBar /> */}
             <Content>
                 {children}
             </Content>
