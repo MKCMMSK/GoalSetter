@@ -92,7 +92,7 @@ export default function NavBar(){
                 <StyledLink to="/" isActive={pathname === '/'}>
                     Home
                 </StyledLink>
-                <StyledLink to="/project" isActive={pathname === '/project'}>
+                <StyledLink to="/projects" isActive={pathname === '/projects'}>
                 Projects
                 </StyledLink>
                 <StyledLink to="/Analytics" isActive={pathname === '/Analytics'}>
