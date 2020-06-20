@@ -26,7 +26,7 @@ class TaskViewSet(viewsets.ModelViewSet):
         return listOfTasks
 
     @action(detail=True)
-    def get_duration(self, request, pk=None):
+    def get_task(self, request, pk=None):
         deconstruct = json.loads(self.request.body.decode('ascii'))
         currentTask = Task.objects.get(id=deconstruct["taskId"])
         print(currentTask, "THIS IS TEST")
