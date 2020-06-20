@@ -8,3 +8,8 @@ class EventViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = EventSerializer
+
+
+#/events/
+# get total hours online of the week
+# total hours on a project of the week
