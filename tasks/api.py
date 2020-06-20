@@ -8,8 +8,8 @@ import json
 # Task Viewset
 class TaskViewSet(viewsets.ModelViewSet):
     
-    # project = Project.objects.get(id=1)
-    # tasks = project.task_set.all()
+    # project = Project.objects.get(id=2)
+    # tasks = Task.objects.all()
     # queryset = tasks
     permission_classes = [
         permissions.AllowAny
