@@ -3,6 +3,8 @@ from rest_framework import viewsets, permissions
 from .serializers import TaskSerializer
 from projects.models import Project
 from rest_framework import request
+from rest_framework.decorators import action
+from rest_framework.response import Response
 import json
 
 # Task Viewset
@@ -24,8 +26,10 @@ class TaskViewSet(viewsets.ModelViewSet):
         return listOfTasks
 
     @action(detail=True)
-    def get_duration(self, request):
+    def get_duration(self, request, pk=None):
         deconstruct = json.loads(self.request.body.decode('ascii'))
-        currentTask = Task.objects.get(id=deconstruct("taskId"))
-
-        return currentTask
+        currentTask = Task.objects.get(id=deconstruct["taskId"])
+        print(currentTask, "THIS IS TEST")
+        serializer = self.get_serializer(currentTask)
+        # return currentTask
+        return Response(serializer.data)
