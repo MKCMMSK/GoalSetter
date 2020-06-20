@@ -86,7 +86,7 @@ export default function Tasks() {
 
   const shouldReceiveNewData = nextData => {
     console.log('Board has changed')
-    console.log(nextData) //ALL DATA
+    console.log(nextData) //ALL DATA - might enable to fetchData get request when theres a change to the data to DRY
     // setState(...state, nextData)
   }
 
@@ -97,6 +97,9 @@ export default function Tasks() {
     // setState(...state, project)
   }
 
+  //TODO: allow user to edit card by creating custom edit box 
+  // show edit box to change data
+  // might need to delete and add new card 
   const onCardEdit = (cardId, metadata, laneId) => {
     console.log(`Card updated on lane `)
 
@@ -136,7 +139,7 @@ export default function Tasks() {
         onLaneClick={t => console.log('You clicked on a lane')}
         onCardClick={onCardEdit}
         onLaneUpdate={onLaneUpdate}
-      // onLaneUpdate={(laneId, data) => console.log(`onLaneUpdate: ${laneId} -> ${data.title}`)}
+      // onLaneUpdate={(laneId, data) => console.log(`onLaneUpdate: ${laneId} -> ${data.title}`)} 
       />
       {/* </Draggable> */}
     </>
