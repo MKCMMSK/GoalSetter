@@ -23,7 +23,8 @@ class TaskViewSet(viewsets.ModelViewSet):
         
         return listOfTasks
 
-    def get_duration(self):
+    @action(detail=True)
+    def get_duration(self, request):
         deconstruct = json.loads(self.request.body.decode('ascii'))
         currentTask = Task.objects.get(id=deconstruct("taskId"))
 
