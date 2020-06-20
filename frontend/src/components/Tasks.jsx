@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
+import axios from "axios"
 import Board from 'react-trello'
 // import Draggable from './Dragable';
-// import axios from "axios"
 
 const mockData = {
   lanes: [
@@ -33,18 +33,30 @@ export default function Tasks() {
   const [state, setState] = useState(mockData);
   // const [state, setState] = useState({});
 
-  // const fetchData = (
-    // axios
-    //   .get(`localhost:8000/projects/${userId}`)
-    //   .then(data => setState(data))
-    //   .catch(error => console.log(error))
-  // )
+  const fetchData = (
+    axios({
+      method: "get",
+      url: `https://localhost:8000/projects/`,
+      data: { userId: 1 }, //TODO remove hardcoded data
+    })
+      .then(data => setState(data))
+      .catch(error => console.log(error))
+  )
 
   const handleCardDelete = (cardId, laneId) => {
     console.log(`Card: ${cardId} deleted from lane: ${laneId}`)
-    // axios
-    //   .delete(`localhost:8000/projects/${cardId}`)
-    //   .catch(error => console.log(error))
+
+    axios({
+      method: "delete",
+      url: `https://localhost:8000/tasks/`,
+      data: { cardId: cardId }
+    })
+      .then(() => {
+        axios
+        .get(`localhost:8000/tasks/`)
+        .catch(error => console.log(error))
+      })
+      .catch(error => console.log(error))
 
     // const project = state.find(id => id = laneId)
     // project.cards.pop(card)
@@ -53,9 +65,18 @@ export default function Tasks() {
 
   const handleCardAdd = (card, laneId) => {
     console.log(`New card added to lane ${laneId}: ${card}`)
-    // axios
-    //   .put(`localhost:8000/projects/${card}`)
-    //   .catch(error => console.log(error))
+
+    axios({
+      method: "put",
+      url: `https://localhost:8000/tasks/`,
+      data: { cardId: card }
+    })
+      .then(() => {
+        axios
+        .get(`localhost:8000/tasks/`)
+        .catch(error => console.log(error))
+      })
+      .catch(error => console.log(error))
 
     // const project = state.map(() => {})
     // const project = state.find(id => id = laneId)
@@ -78,11 +99,11 @@ export default function Tasks() {
 
   const onCardEdit = (cardId, metadata, laneId) => {
     console.log(`Card updated on lane `)
-    
+
     return (
       <div>test</div>
     )
-     // axios
+    // axios
     //   .put(`localhost:8000/projects/${cardId}`)
     //   .catch(error => console.log(error))
 
@@ -100,7 +121,7 @@ export default function Tasks() {
     <>
       {/* <Draggable> */}
       <Board
-        style={{backgroundColor: '#A8D0E6'}}
+        style={{ backgroundColor: '#A8D0E6' }}
         data={state}
         draggable
         editable
