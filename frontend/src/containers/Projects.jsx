@@ -10,47 +10,48 @@ import MonthlyCalendar from "../components/Calendar"
 import WeekTaskView from "../components/WeekTaskView"
 
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      '& > *': {
-        margin: theme.spacing(1),
-        width: theme.spacing(16),
-        height: theme.spacing(16),
-      },
-    },
-  }),
-);
-const sessions = [
-  { id: 1, duration: '00:00:30', time_of_day: '2020-06-06 01:23:45-04', productivity: 'TRUE', site_id: 1 },
-  { id: 2, duration: '01:00:30', time_of_day: '2020-06-06 02:23:45-04', productivity: 'FALSE', site_id: 2 },
-  { id: 3, duration: '02:00:30', time_of_day: '2020-06-06 03:23:45-04', productivity: 'TRUE', site_id: 1 },
-  { id: 4, duration: '00:10:30', time_of_day: '2020-06-07 04:23:45-04', productivity: 'TRUE', site_id: 4 },
-  { id: 5, duration: '00:30:30', time_of_day: '2020-06-07 05:23:45-04', productivity: 'FALSE', site_id: 1 }
-]
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+  },
+  heading: {
+    fontSize: theme.typography.pxToRem(15),
+    fontWeight: theme.typography.fontWeightRegular,
+  },
+}));
+// const sessions = [
+//   { id: 1, duration: '00:00:30', time_of_day: '2020-06-06 01:23:45-04', productivity: 'TRUE', site_id: 1 },
+//   { id: 2, duration: '01:00:30', time_of_day: '2020-06-06 02:23:45-04', productivity: 'FALSE', site_id: 2 },
+//   { id: 3, duration: '02:00:30', time_of_day: '2020-06-06 03:23:45-04', productivity: 'TRUE', site_id: 1 },
+//   { id: 4, duration: '00:10:30', time_of_day: '2020-06-07 04:23:45-04', productivity: 'TRUE', site_id: 4 },
+//   { id: 5, duration: '00:30:30', time_of_day: '2020-06-07 05:23:45-04', productivity: 'FALSE', site_id: 1 }
+// ]
 
 const ProjectPage = () => {
   const classes = useStyles();
 
-  const [state, setState] = useState({});
+  const [state, setState] = useState({ data: [] });
 
   const fetchProjects = () => {
-      axios
-        .get(`http://localhost:8000/api/projects/`)
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
+    axios
+      .get(`http://localhost:8000/api/projects/`)
+      .then(response => setState(response))
+      .catch(error => console.log(error))
   }
-  fetchProjects()
+
+  const projects = state.data;
 
   useEffect(() => {
     fetchProjects()
   }, [])
 
-console.log(state)
+  console.log(state)
   return (
     <PageLayout>
       <header>
@@ -60,16 +61,32 @@ console.log(state)
       <section className="dashboad-page">
         <MonthlyCalendar />
         {/* <SessionList sessions={sessions} /> */}
-        <WeekTaskView />
         {/* <Swipable  /> */}
-        <div className={classes.root}>
+        {projects.map((project) => (
+          <div className={classes.root}>
+            <ExpansionPanel>
+              <ExpansionPanelSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography className={classes.heading}>{project.name}</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+              <Typography >
+                  {project.description}
+                </Typography>
+                <Typography>
+                  Start date: {project.start_date}
+                </Typography>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </div>
+        ))}
+        <WeekTaskView />
 
-          <Paper elevation={3} projects={state}>
-            test
-          </Paper>
-        </div>
       </section>
-    </PageLayout>
+    </PageLayout >
   );
 };
 
