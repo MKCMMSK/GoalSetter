@@ -17,11 +17,11 @@ class URLSessionViewSet(viewsets.ModelViewSet):
     @action(detail=True)
     def get_sessions_by_week(self, request, pk=None):
         deconstruct = json.loads(self.request.body.decode('ascii'))
-        print(deconstruct)
         beginningOfWeek = deconstruct["sunday"]
         endOfWeek = deconstruct["saturday"] 
         
-        sessionsByWeek = URLSession.objects.filter(time_of_day__range[beginningOfWeek, endOfWeek])
+        sessionsByWeek = URLSession.objects.filter(time_of_day__range=[beginningOfWeek, endOfWeek])
+        print(sessionsByWeek)
         serializer = self.get_serializer(sessionsByWeek, many=True)
 
-        return serializer.data
+        return Response(serializer.data)
