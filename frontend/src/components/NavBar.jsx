@@ -81,6 +81,14 @@ export default function NavBar(){
     const [menuOpen, setMenuOpen] = useState(false);
     const {id, setTheme} = useContext(ThemeContext);
 
+   
+    // function signOut() {
+    //     var auth2 = gapi.auth2.getAuthInstance();
+    //     auth2.signOut().then(function () {
+    //       console.log('User signed out.');
+    //     });
+    //   }
+
     return (
         <HeaderWrapper>
             <MobileMenuIcon onClick={() => setMenuOpen(s => !s)}>
@@ -95,8 +103,11 @@ export default function NavBar(){
                 <StyledLink to="/projects" isActive={pathname === '/projects'}>
                 Projects
                 </StyledLink>
-                <StyledLink to="/Analytics" isActive={pathname === '/Analytics'}>
-                Projects
+                <StyledLink to="/analytics" isActive={pathname === '/analytics'}>
+                Analytics
+                </StyledLink>
+                <StyledLink to="/login" isActive={pathname === '/login'}>
+                Sign Out
                 </StyledLink>
                 <Toggle isActive={id === 'dark'} onToggle={setTheme} />
             </Menu>
