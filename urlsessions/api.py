@@ -21,5 +21,7 @@ class URLSessionViewSet(viewsets.ModelViewSet):
         beginningOfWeek = deconstruct["sunday"]
         endOfWeek = deconstruct["saturday"] 
         
-        sessionsByWeek = Session.objects.filter(time_of_day__range[beginningOfWeek, endOfWeek])
-        return deconstruct
+        sessionsByWeek = URLSession.objects.filter(time_of_day__range[beginningOfWeek, endOfWeek])
+        serializer = self.get_serializer(sessionsByWeek, many=True)
+
+        return serializer.data
