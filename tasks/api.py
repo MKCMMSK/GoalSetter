@@ -2,6 +2,7 @@ from tasks.models import Task
 from rest_framework import viewsets, permissions
 from .serializers import TaskSerializer
 from projects.models import Project
+from users.models import User
 from rest_framework import request
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -27,11 +28,22 @@ class TaskViewSet(viewsets.ModelViewSet):
         
         return listOfTasks
 
+    # @action(detail=True)
+    # def get_task(self, request, pk=None):
+    #     deconstruct = json.loads(self.request.body.decode('ascii'))
+    #     currentTask = Task.objects.get(id=deconstruct["taskId"])
+    #     print(currentTask, "THIS IS TEST")
+    #     serializer = self.get_serializer(currentTask)
+    #     # return currentTask
+    #     return Response(serializer.data)
+
     @action(detail=True)
-    def get_task(self, request, pk=None):
+    def get_all_tasks(self,request, pk=None):
         deconstruct = json.loads(self.request.body.decode('ascii'))
-        currentTask = Task.objects.get(id=deconstruct["taskId"])
-        print(currentTask, "THIS IS TEST")
-        serializer = self.get_serializer(currentTask)
-        # return currentTask
-        return Response(serializer.data)
+        currentUser = User.objects.get(id=deconstruct["userId"])
+        projectsList = currentUser.project_set.all()
+        taskList = []
+        for project in projectsList:
+            serializer = self.get_serializer(project.task_set.all(), many=True)
+            taskList.append(serializer.data)
+        return Response(taskList)
