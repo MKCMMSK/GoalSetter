@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import styled, {ThemeContext} from 'styled-components';
 import {Link as ReactRouterDomLink, useLocation} from 'react-router-dom';
-import {Toggle} from './Toggle';
+import Toggle from './Toggle';
 // import "./navBar.css"
 
 const HeaderWrapper = styled.header`
@@ -92,7 +92,7 @@ export default function NavBar(){
                 <StyledLink to="/" isActive={pathname === '/'}>
                     Home
                 </StyledLink>
-                <StyledLink to="/project" isActive={pathname === '/project'}>
+                <StyledLink to="/projects" isActive={pathname === '/projects'}>
                 Projects
                 </StyledLink>
                 <StyledLink to="/Analytics" isActive={pathname === '/Analytics'}>
