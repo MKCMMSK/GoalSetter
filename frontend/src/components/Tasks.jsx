@@ -3,12 +3,11 @@ import axios from "axios"
 import Board from 'react-trello'
 // import Draggable from './Dragable';
 
-const mockData = {
+const mockDataTrello = {
   lanes: [
     {
-      id: 'lane1',
+      id: '1',
       title: 'Planned Tasks',
-      label: '2/2',
       cards: [
         { id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins', draggable: false },
         { id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: { sha: 'be312a1' } }
@@ -17,7 +16,6 @@ const mockData = {
     {
       id: 'lane2',
       title: 'Completed',
-      label: '0/0',
       cards: []
     },
     {
@@ -28,33 +26,118 @@ const mockData = {
     }
   ]
 }
+const dbProjectsFixed = [
+  {
+    "id": 1,
+    "name": "productivity web app",
+    description: "web app with ML to stay on track",
+    "start_date": "2020-06-18",
+    "user": 1
+  },
+  {
+    "id": 2,
+    "name": "tinder for cats",
+    "description": "Heard of tinder? heard of tinder for dogs? i present to you tinder for cats",
+    "start_date": "2020-06-18",
+    "user": 1
+  },
+  {
+    "id": 3,
+    "name": "travel POI",
+    "description": "travel app that shows you POI around you and must sees",
+    "start_date": "2020-06-18",
+    "user": 1
+  },
+  {
+    "id": 7,
+    "name": "interview",
+    "description": "practice leet code",
+    "start_date": "2020-06-18",
+    "user": 1
+  }
+]
+const dbTasksFixed = [
+  [
+    {
+      "id": 1,
+      "name": "Researching stack",
+      "category": "research",
+      "notes": "thinking about react and node",
+      "start_date": "2020-06-18",
+      "project": 1
+    },
+    {
+      "id": 2,
+      "name": "plan out wire frames",
+      "category": "execution",
+      "notes": "look into user experience and what I want out of this",
+      "start_date": "2020-06-18",
+      "project": 1
+    },
+    {
+      "id": 3,
+      "name": "break down front and backend",
+      "category": "execution",
+      "notes": "things i want to do on the front end and the things i want to do in the backend",
+      "start_date": "2020-06-18",
+      "project": 1
+    }
+  ],
+  [
+    {
+      "id": 4,
+      "name": "market research",
+      "category": "research",
+      "notes": "check out cat users and demand",
+      "start_date": "2020-06-18",
+      "project": 2
+    },
+    {
+      "id": 5,
+      "name": "tech stack",
+      "category": "research",
+      "notes": "want it for mobile so react native? swift?",
+      "start_date": "2020-06-18",
+      "project": 2
+    }
+  ],
+  [],
+  []
+]
 
-export default function Tasks() {
-  const [state, setState] = useState(mockData);
-  // const [state, setState] = useState({});
+export default function Tasks({ projectsList, tasksList }) {
+  const [state, setState] = useState({ lanes: dbProjectsFixed });
+  // const [state, setState] = useState(mockDataTrello);
 
-  const fetchData = (
-    axios({
-      method: "get",
-      url: `https://localhost:8000/projects/`,
-      data: { userId: 1 }, //TODO remove hardcoded data
+  const combineLists = (() => {
+    dbTasksFixed.map((taskArr) => {
+      taskArr.map((task) => {
+        console.log(task)
+        task.title = task.name
+        task.description = task.notes
+        task.label = "30min"
+      })
     })
-      .then(data => setState(data))
-      .catch(error => console.log(error))
-  )
+    dbProjectsFixed.map((project, index) => {
+      project.cards = dbTasksFixed[index]
+      project.title = project.name
+    })
+    setState({ lanes: dbProjectsFixed })
+    console.log(state)
+  })
 
   const handleCardDelete = (cardId, laneId) => {
     console.log(`Card: ${cardId} deleted from lane: ${laneId}`)
 
     axios({
       method: "delete",
-      url: `https://localhost:8000/tasks/`,
+      url: `http://localhost:8000/tasks/`,
       data: { cardId: cardId }
     })
       .then(() => {
         axios
-        .get(`localhost:8000/tasks/`)
-        .catch(error => console.log(error))
+          .get(`localhost:8000/tasks/`)
+          .catch(error => console.log(error))
       })
       .catch(error => console.log(error))
 
@@ -68,13 +151,13 @@ export default function Tasks() {
 
     axios({
       method: "put",
-      url: `https://localhost:8000/tasks/`,
+      url: `http://localhost:8000/tasks/`,
       data: { cardId: card }
     })
       .then(() => {
         axios
-        .get(`localhost:8000/tasks/`)
-        .catch(error => console.log(error))
+          .get(`localhost:8000/tasks/`)
+          .catch(error => console.log(error))
       })
       .catch(error => console.log(error))
 
@@ -118,6 +201,7 @@ export default function Tasks() {
 
   useEffect(() => {
     // fetchData()
+    combineLists()
   }, [])
 
   return (
