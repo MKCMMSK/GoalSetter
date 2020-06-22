@@ -40,7 +40,7 @@ const ProjectPage = () => {
 
   const fetchProjects = () => {
     axios
-      .get(`http://localhost:8000/api/projects/`)
+      .get(`https://localhost:8000/api/projects/`)
       .then(response => setState(response))
       .catch(error => console.log(error))
   }
