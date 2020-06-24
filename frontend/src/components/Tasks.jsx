@@ -3,116 +3,11 @@ import axios from "axios"
 import Board from 'react-trello'
 // import Draggable from './Dragable';
 
-const mockDataTrello = {
-  lanes: [
-    {
-      id: '1',
-      title: 'Planned Tasks',
-      cards: [
-        { id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins', draggable: false },
-        { id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: { sha: 'be312a1' } }
-      ]
-    },
-    {
-      id: 'lane2',
-      title: 'Completed',
-      cards: []
-    },
-    {
-      id: 'lane3',
-      title: 'Completed',
-      label: '0/0',
-      cards: []
-    }
-  ]
-}
-const dbProjectsFixed = [
-  {
-    "id": 1,
-    "name": "productivity web app",
-    description: "web app with ML to stay on track",
-    "start_date": "2020-06-18",
-    "user": 1
-  },
-  {
-    "id": 2,
-    "name": "tinder for cats",
-    "description": "Heard of tinder? heard of tinder for dogs? i present to you tinder for cats",
-    "start_date": "2020-06-18",
-    "user": 1
-  },
-  {
-    "id": 3,
-    "name": "travel POI",
-    "description": "travel app that shows you POI around you and must sees",
-    "start_date": "2020-06-18",
-    "user": 1
-  },
-  {
-    "id": 7,
-    "name": "interview",
-    "description": "practice leet code",
-    "start_date": "2020-06-18",
-    "user": 1
-  }
-]
-const dbTasksFixed = [
-  [
-    {
-      "id": 1,
-      "name": "Researching stack",
-      "category": "research",
-      "notes": "thinking about react and node",
-      "start_date": "2020-06-18",
-      "project": 1
-    },
-    {
-      "id": 2,
-      "name": "plan out wire frames",
-      "category": "execution",
-      "notes": "look into user experience and what I want out of this",
-      "start_date": "2020-06-18",
-      "project": 1
-    },
-    {
-      "id": 3,
-      "name": "break down front and backend",
-      "category": "execution",
-      "notes": "things i want to do on the front end and the things i want to do in the backend",
-      "start_date": "2020-06-18",
-      "project": 1
-    }
-  ],
-  [
-    {
-      "id": 4,
-      "name": "market research",
-      "category": "research",
-      "notes": "check out cat users and demand",
-      "start_date": "2020-06-18",
-      "project": 2
-    },
-    {
-      "id": 5,
-      "name": "tech stack",
-      "category": "research",
-      "notes": "want it for mobile so react native? swift?",
-      "start_date": "2020-06-18",
-      "project": 2
-    }
-  ],
-  [],
-  []
-]
-
 export default function Tasks({ projectsList, tasksList }) {
   const [state, setState] = useState({ lanes: projectsList });
-  // const [state, setState] = useState(mockDataTrello);
-console.log(projectsList)
-console.log(tasksList)
+  console.log(state)
 
   const combineLists = (() => {
-    console.log(Boolean(tasksList.id))
     tasksList.length > 0 ?
     tasksList.map((taskArr) => {
       taskArr.map((task) => {
@@ -123,14 +18,12 @@ console.log(tasksList)
       })
     })
     : tasksList = [[{}]]
-    console.log(tasksList)
 
     projectsList.map((project, index) => {
       project.cards = tasksList[index]
       project.title = project.name
     })
     setState({ lanes: projectsList })
-    console.log(state)
   })
 
   const handleCardDelete = (cardId, laneId) => {
@@ -207,7 +100,6 @@ console.log(tasksList)
 
 
   useEffect(() => {
-    // fetchData()
     combineLists()
   }, [projectsList, tasksList])
 
