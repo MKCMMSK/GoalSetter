@@ -39,7 +39,9 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     @action(detail=True)
     def get_all_tasks(self,request, pk=None):
+        print('====')
         deconstruct = json.loads(self.request.body.decode('ascii'))
+        print(deconstruct)
         currentUser = User.objects.get(id=deconstruct["userId"])
         projectsList = currentUser.project_set.all()
         taskList = []

@@ -106,11 +106,15 @@ const dbTasksFixed = [
 ]
 
 export default function Tasks({ projectsList, tasksList }) {
-  const [state, setState] = useState({ lanes: dbProjectsFixed });
+  const [state, setState] = useState({ lanes: projectsList });
   // const [state, setState] = useState(mockDataTrello);
+console.log(projectsList)
+console.log(tasksList)
 
   const combineLists = (() => {
-    dbTasksFixed.map((taskArr) => {
+    console.log(Boolean(tasksList.id))
+    tasksList.id ?
+    tasksList.map((taskArr) => {
       taskArr.map((task) => {
         console.log(task)
         task.title = task.name
@@ -118,11 +122,14 @@ export default function Tasks({ projectsList, tasksList }) {
         task.label = "30min"
       })
     })
-    dbProjectsFixed.map((project, index) => {
-      project.cards = dbTasksFixed[index]
+    : tasksList = [[{}]]
+    console.log(tasksList)
+
+    projectsList.map((project, index) => {
+      project.cards = tasksList[index]
       project.title = project.name
     })
-    setState({ lanes: dbProjectsFixed })
+    setState({ lanes: projectsList })
     console.log(state)
   })
 
