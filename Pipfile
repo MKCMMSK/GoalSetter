@@ -11,6 +11,7 @@ djangorestframework = "*"
 python-dotenv = "*"
 psycopg2 = "*"
 django-cors-headers = "*"
+google-auth = "*"
 
 [requires]
 python_version = "3.7"

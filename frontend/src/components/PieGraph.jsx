@@ -1,5 +1,5 @@
 import React from "react";
-import { Chart } from '@bit/primefaces.primereact.chart';
+// import { Chart } from '@bit/primefaces.primereact.chart';
 
 const PieGraph = (props) => {
 const {productivity} = props;
@@ -16,7 +16,7 @@ const {productivity} = props;
   };
     return (
       <div style={{ width: 400 }}>
-      <Chart type='pie' data={data} />
+      {/* <Chart type='pie' data={data} /> */}
     </div>
     )
 }

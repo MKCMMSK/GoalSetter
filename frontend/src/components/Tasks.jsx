@@ -36,7 +36,7 @@ export default function Tasks() {
   const fetchData = (
     axios({
       method: "get",
-      url: `https://localhost:8000/projects/`,
+      url: `http://localhost:8000/api/projects/`,
       data: { userId: 1 }, //TODO remove hardcoded data
     })
       .then(data => setState(data))
@@ -48,7 +48,7 @@ export default function Tasks() {
 
     axios({
       method: "delete",
-      url: `https://localhost:8000/tasks/`,
+      url: `http://localhost:8000/tasks/`,
       data: { cardId: cardId }
     })
       .then(() => {
@@ -68,7 +68,7 @@ export default function Tasks() {
 
     axios({
       method: "put",
-      url: `https://localhost:8000/tasks/`,
+      url: `http://localhost:8000/tasks/`,
       data: { cardId: card }
     })
       .then(() => {

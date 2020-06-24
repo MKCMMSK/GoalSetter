@@ -1,5 +1,5 @@
 import React from "react";
-import { Chart } from '@bit/primefaces.primereact.chart';
+// import { Chart } from '@bit/primefaces.primereact.chart';
 
 const BarLineChart = (props) => {
   const { weeklyHoursOnline, projectHours } = props;
@@ -40,7 +40,7 @@ const BarLineChart = (props) => {
 
   return (
     <div style={{ width: 500 }}>
-      <Chart type='bar' data={data} options={options} />
+      {/* <Chart type='bar' data={data} options={options} /> */}
     </div>
   )
 }
