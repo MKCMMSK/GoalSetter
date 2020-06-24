@@ -119,7 +119,7 @@ console.log(tasksList)
         console.log(task)
         task.title = task.name
         task.description = task.notes
-        task.label = "30min"
+        task.label = "30min" //TODO change to estimate time
       })
     })
     : tasksList = [[{}]]
