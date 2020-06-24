@@ -113,7 +113,7 @@ console.log(tasksList)
 
   const combineLists = (() => {
     console.log(Boolean(tasksList.id))
-    tasksList.id ?
+    tasksList.length > 0 ?
     tasksList.map((taskArr) => {
       taskArr.map((task) => {
         console.log(task)
@@ -209,7 +209,7 @@ console.log(tasksList)
   useEffect(() => {
     // fetchData()
     combineLists()
-  }, [])
+  }, [projectsList, tasksList])
 
   return (
     <>
