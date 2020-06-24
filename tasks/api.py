@@ -12,15 +12,9 @@ import json
 
 
 class TaskViewSet(viewsets.ModelViewSet):
-<<<<<<< HEAD
     
     # project = Project.objects.get(id=2)
     # tasks = Task.objects.all()
-=======
-
-    # project = Project.objects.get(id=1)
-    # tasks = project.task_set.all()
->>>>>>> f7ecb15c28c05d45ac9e8096abd6eaf053394dd4
     # queryset = tasks
     permission_classes = [
         permissions.AllowAny
@@ -28,7 +22,6 @@ class TaskViewSet(viewsets.ModelViewSet):
     serializer_class = TaskSerializer
 
     def get_queryset(self):
-<<<<<<< HEAD
         deconstruct = json.loads(self.request.body.decode('ascii'))
         currentProject = Project.objects.get(id = deconstruct["projectId"])
         listOfTasks = currentProject.task_set.all()
@@ -54,13 +47,3 @@ class TaskViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(project.task_set.all(), many=True)
             taskList.append(serializer.data)
         return Response(taskList)
-=======
-        # return self.request.query_params.tasks.all()
-        # deconstruct = self.request.query_params.__getitem__(currentUserId)
-        # deconstruct = self.request.query_params.currentUserId
-        deconstruct = self.request.body.decode('ascii')
-        print(deconstruct, 'THIS IS THE TESTED PRINT')
-        return deconstruct
-        # currentProject = Project.objects.get(id=self.request.query_params)
-        # return currentProject.tasks.all()
->>>>>>> f7ecb15c28c05d45ac9e8096abd6eaf053394dd4
