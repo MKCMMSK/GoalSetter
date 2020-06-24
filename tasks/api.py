@@ -39,11 +39,13 @@ class TaskViewSet(viewsets.ModelViewSet):
 
     @action(detail=True)
     def get_all_tasks(self,request, pk=None):
-        print('====')
-        deconstruct = json.loads(self.request.body.decode('ascii'))
-        print(deconstruct)
+        print(self.request.headers)
+        print(self.request.query_params)
+
+        deconstruct = self.request.query_params
         currentUser = User.objects.get(id=deconstruct["userId"])
         projectsList = currentUser.project_set.all()
+        
         taskList = []
         for project in projectsList:
             serializer = self.get_serializer(project.task_set.all(), many=True)
