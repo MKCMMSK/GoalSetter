@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from "react"
-// import axios from "axios"
+import React, { useEffect } from "react"
 
 //components
 import PageLayout from '../components/PageLayout';
 import Tasks from "../components/Tasks"
 
+//hooks
+import useApplicationData from "../components/hooks/useApplicationData"
 
 const HomePage = () => {
-  const [state, setState] = useState({});
-
-  // const fetchData = () => {
-    // return (
-    //   axios
-    //     .get(`localhost:8000/projects/${userId}`)
-    //     .then(data => setState(data))
-    //     .catch(error => console.log(error))
-    // )
-  // }
+  const { state, fetchData } = useApplicationData()
+  const { projectsList, tasksList} = state;
+  console.log(state)
 
   useEffect(() => {
-    // fetchData()
+    fetchData()
   }, [])
 
   return (
@@ -29,7 +23,7 @@ const HomePage = () => {
       </header>
 
       <section className="project-page">
-        <Tasks projects={state} />
+        <Tasks projectsList={projectsList} tasksList={tasksList}/>
       </section>
     </PageLayout>
   )

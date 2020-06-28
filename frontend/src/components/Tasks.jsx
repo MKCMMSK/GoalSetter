@@ -53,7 +53,7 @@ export default function Tasks() {
     })
       .then(() => {
         axios
-        .get(`localhost:8000/tasks/`)
+        .get(`localhost:8000/api/tasks/1/get`)
         .catch(error => console.log(error))
       })
       .catch(error => console.log(error))
