@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'tasks',
     'whitelists',
     'corsheaders',
+    'google.oauth2',
+    'google.auth.transport'
 ]
 
 MIDDLEWARE = [

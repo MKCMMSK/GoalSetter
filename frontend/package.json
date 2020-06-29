@@ -4,7 +4,6 @@
   "private": true,
   "proxy": "http://localhost:8000",
   "dependencies": {
-    "@bit/primefaces.primereact.chart": "^4.2.0",
     "@devexpress/dx-react-core": "^2.6.4",
     "@devexpress/dx-react-scheduler": "^2.6.4",
     "@devexpress/dx-react-scheduler-material-ui": "^2.6.4",
