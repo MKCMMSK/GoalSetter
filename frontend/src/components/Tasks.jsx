@@ -2,16 +2,27 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import Board from 'react-trello'
 // import Draggable from './Dragable';
+import styled from "styled-components";
+import { makeStyles } from '@material-ui/core/styles';
 
+//hooks
+import useApplicationData from "../components/hooks/useApplicationData"
+
+const useStyles = makeStyles({
+  tasks: {
+    height: 'inherit',
+    width: 'inherit',
+  }
+});
 export default function Tasks({ projectsList, tasksList }) {
+  const classes = useStyles();
+
   const [state, setState] = useState({ lanes: projectsList });
-  console.log(state)
 
   const combineLists = (() => {
     tasksList.length > 0 ?
     tasksList.map((taskArr) => {
       taskArr.map((task) => {
-        console.log(task)
         task.title = task.name
         task.description = task.notes
         task.label = "30min" //TODO change to estimate time
@@ -106,7 +117,8 @@ export default function Tasks({ projectsList, tasksList }) {
   return (
     <>
       {/* <Draggable> */}
-      <Board
+      <Board 
+        className={classes.tasks}
         style={{ backgroundColor: '#A8D0E6' }}
         data={state}
         draggable
