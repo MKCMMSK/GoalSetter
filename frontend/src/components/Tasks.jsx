@@ -3,58 +3,41 @@ import axios from "axios"
 import Board from 'react-trello'
 // import Draggable from './Dragable';
 
-const mockData = {
-  lanes: [
-    {
-      id: 'lane1',
-      title: 'Planned Tasks',
-      label: '2/2',
-      cards: [
-        { id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins', draggable: false },
-        { id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: { sha: 'be312a1' } }
-      ]
-    },
-    {
-      id: 'lane2',
-      title: 'Completed',
-      label: '0/0',
-      cards: []
-    },
-    {
-      id: 'lane3',
-      title: 'Completed',
-      label: '0/0',
-      cards: []
-    }
-  ]
-}
+export default function Tasks({ projectsList, tasksList }) {
+  const [state, setState] = useState({ lanes: projectsList });
+  console.log(state)
 
-export default function Tasks() {
-  const [state, setState] = useState(mockData);
-  // const [state, setState] = useState({});
-
-  const fetchData = (
-    axios({
-      method: "get",
-      url: `https://localhost:8000/projects/`,
-      data: { userId: 1 }, //TODO remove hardcoded data
+  const combineLists = (() => {
+    tasksList.length > 0 ?
+    tasksList.map((taskArr) => {
+      taskArr.map((task) => {
+        console.log(task)
+        task.title = task.name
+        task.description = task.notes
+        task.label = "30min" //TODO change to estimate time
+      })
     })
-      .then(data => setState(data))
-      .catch(error => console.log(error))
-  )
+    : tasksList = [[{}]]
+
+    projectsList.map((project, index) => {
+      project.cards = tasksList[index]
+      project.title = project.name
+    })
+    setState({ lanes: projectsList })
+  })
 
   const handleCardDelete = (cardId, laneId) => {
     console.log(`Card: ${cardId} deleted from lane: ${laneId}`)
 
     axios({
       method: "delete",
-      url: `https://localhost:8000/tasks/`,
+      url: `http://localhost:8000/tasks/`,
       data: { cardId: cardId }
     })
       .then(() => {
         axios
-        .get(`localhost:8000/tasks/`)
-        .catch(error => console.log(error))
+          .get(`localhost:8000/tasks/`)
+          .catch(error => console.log(error))
       })
       .catch(error => console.log(error))
 
@@ -68,13 +51,13 @@ export default function Tasks() {
 
     axios({
       method: "put",
-      url: `https://localhost:8000/tasks/`,
+      url: `http://localhost:8000/tasks/`,
       data: { cardId: card }
     })
       .then(() => {
         axios
-        .get(`localhost:8000/tasks/`)
-        .catch(error => console.log(error))
+          .get(`localhost:8000/tasks/`)
+          .catch(error => console.log(error))
       })
       .catch(error => console.log(error))
 
@@ -117,8 +100,8 @@ export default function Tasks() {
 
 
   useEffect(() => {
-    // fetchData()
-  }, [])
+    combineLists()
+  }, [projectsList, tasksList])
 
   return (
     <>
