@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
-import qs from 'qs';
 
 // axios.defaults.headers.get['Content-Type'] = 'application/json';
 // axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 // axios.defaults.headers.get['Vary'] = 'Accept, Origin, Cookie';
 // axios.defaults.headers.get['Allow'] = 'GET, HEAD, OPTIONS';
-
-
 
 export default function useApplicationData() {
 
@@ -19,7 +16,6 @@ export default function useApplicationData() {
   const fetchData = () => {
 
     var data = JSON.stringify({ "userId": 1 });
-
 
     axios({
       method: "get",
