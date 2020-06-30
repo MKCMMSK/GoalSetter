@@ -1,4 +1,23 @@
 const toggleSwitch = document.getElementById('toggle');
+const checkBox = document.getElementById('toggle-check');
+
+const clock = document.getElementsByClassName('time')[0];
+
+let startTime = null;
+let timer = null;
+
+// We need to force a load screen until this completes.
+chrome.runtime.sendMessage({
+    action: "getStatus"
+}, (response) => {
+    if (response.startTime !== null) {
+        // Setting the value like this will not trigger
+        //  change event.
+        checkBox.checked = true;
+        startTimer(response.startTime);
+    }
+});
+
 
 // chrome.tabs.remove(id) will close a tab by tabId.
 
@@ -7,30 +26,55 @@ const toggleSwitch = document.getElementById('toggle');
 //     else stopMonitoring();
 // });
 
+// Time function needs to be offloaded to background,
+//  popup ceases to run once closed.  Duh.
 
-// ************************
-// This is all garbage now.
-// ************************
+toggleSwitch.addEventListener('change', () => {
+    if (checkBox.checked) {
+        startMonitoring();
+    } else {
+        stopMonitoring();
+    }
+});
+
 
 const startMonitoring = () => {
-    // When a tab is created, clicked on,
-    //  or otherwise becomes active.
-    chrome.tabs.onActivated.addListener((activeInfo) => {
-        activeTabID = activeInfo.tabId;
-        activeWindowId = activeInfo.windowId;
-        console.log(activeTabID);
-        console.log(activeWindowId);
+    chrome.runtime.sendMessage({
+        action: "startWork"
+    }, (response) => {
+        startTimer(response.startTime);
     });
-
-    // When any tab is updated, not neccesarily
-    //  a tab the user is viewing.
-    chrome.tabs.onUpdated.addListener(
-        (tabId, changeInfo, tab) => {
-
-        }
-    );
 };
 
-const endMonitoring = () => {
-
+const stopMonitoring = () => {
+    chrome.runtime.sendMessage({
+        action: "stopWork"
+    }, () => {
+        clearInterval(timer);
+    });
 };
+
+// This suffers from drift, low priority,
+//  but is fixable later.
+const startTimer = (startTime) => {
+    this.startTime = startTime;
+
+    timer = setInterval(() => {
+        let nextTime = 
+            msToTime(Date.now() - this.startTime);
+        clock.textContent = nextTime;
+    }, 1000);
+}
+
+const msToTime = (duration) => {
+    let milliseconds = parseInt((duration%1000)/100)
+        , seconds = parseInt((duration/1000)%60)
+        , minutes = parseInt((duration/(1000*60))%60)
+        , hours = parseInt((duration/(1000*60*60))%24);
+
+    hours = (hours < 10) ? "0" + hours : hours;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+    return hours + ":" + minutes + ":" + seconds;
+}

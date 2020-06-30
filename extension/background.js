@@ -10,8 +10,6 @@ chrome.runtime.onInstalled.addListener(function () {
 let activeTabId = null;
 let activeWindowId = null;
 
-let timer = 0;
-
 chrome.runtime.onMessage.addListener(
   (request, sender, response) => {
     // Do we even need to track these with the
@@ -22,16 +20,30 @@ chrome.runtime.onMessage.addListener(
     //  data is sent AFTER new pages load, but
     //  on old tabs, this data should all be there 
     //  and up to date.
-    activeTabId = sender.tab.id;
-    activeWindowId = sender.tab.windowId;
+    // MESSAGE FROM TAB
+    if (sender.tab) {
+      activeTabId = sender.tab.id;
+      activeWindowId = sender.tab.windowId;
 
-    console.log(
-      `You have loaded a new page:
-      windowId: ${sender.tab.windowId}
-      tabId: ${sender.tab.id}
-      tabName: ${sender.tab.title}
-      tabUrl: ${sender.tab.url}`
-    );
+      console.log(
+        `You have loaded a new page:
+        windowId: ${sender.tab.windowId}
+        tabId: ${sender.tab.id}
+        tabName: ${sender.tab.title}
+        tabUrl: ${sender.tab.url}`
+      );
+    }
+    // MESSAGES FROM EXTENSION
+
+    if (request.action === "startWork") {
+      startTime = Date.now();
+      response({startTime: startTime});
+    } else if (request.action === "stopWork") {
+      startTime = null;
+      response();
+    } else if (request.action === "getStatus") {
+      response({startTime: startTime});
+    }
   }
 );
 
@@ -39,8 +51,8 @@ chrome.tabs.onActivated.addListener(
   tab => {
     console.log(tab);
     chrome.tabs.get(tab.tabId, tab => {
-      activeTabId = sender.tab.id;
-      activeWindowId = sender.tab.windowId;
+      activeTabId = tab.id;
+      activeWindowId = tab.windowId;
       console.log(
         `You have changed tabs:
         windowId: ${tab.windowId}
@@ -61,3 +73,15 @@ useful tab keys:
   string  title
   string  url
 */
+
+
+/* TIMER */
+
+let startTime = null;
+let interval = 1000;
+
+let workActive = false;
+
+const startTimer = () => {
+  startTime = Date.now();
+};
