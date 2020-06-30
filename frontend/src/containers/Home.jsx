@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 //components
 import PageLayout from '../components/PageLayout';
 import Tasks from "../components/Tasks"
+import GoogleLoginButton from "../components/GoogleLogin"
 
 //hooks
 import useApplicationData from "../components/hooks/useApplicationData"
@@ -46,6 +47,7 @@ const HomePage = () => {
 
       <section className={classes.root}>
         <Tasks  projectsList={projectsList} tasksList={tasksList}/>
+        <GoogleLoginButton/>
       </section>
     </PageLayout>
   )
