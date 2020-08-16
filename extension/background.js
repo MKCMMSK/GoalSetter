@@ -12,6 +12,9 @@ let activeWindowId = null;
 
 chrome.runtime.onMessage.addListener(
   (request, sender, response) => {
+    console.log("background.js got a message")
+    console.log(request, sender, response)
+
     // Do we even need to track these with the
     //  messaging system we're given?
     // Yes, because this only updates on page loads.
@@ -43,9 +46,12 @@ chrome.runtime.onMessage.addListener(
       response();
     } else if (request.action === "getStatus") {
       response({startTime: startTime});
+    } else if (request.action === "retrieveData") {
+      response({activeTabId, activeWindowId, tabName: sender.tab.title, tabUrl: sender.tab.url});
     }
   }
 );
+console.log("this is background.js reporting for duty");
 
 chrome.tabs.onActivated.addListener(
   tab => {
@@ -85,3 +91,76 @@ let workActive = false;
 const startTimer = () => {
   startTime = Date.now();
 };
+/*
+(function() {
+  const tabStorage = {};
+  const networkFilters = {
+      urls: [
+          "*://developer.mozilla.org/*"
+      ]
+  };
+
+  chrome.webRequest.onBeforeRequest.addListener((details) => {
+      const { tabId, requestId } = details;
+      if (!tabStorage.hasOwnProperty(tabId)) {
+          return;
+      }
+
+      tabStorage[tabId].requests[requestId] = {
+          requestId: requestId,
+          url: details.url,
+          startTime: details.timeStamp,
+          status: 'pending'
+      };
+      console.log(tabStorage[tabId].requests[requestId]);
+  }, networkFilters);
+
+  chrome.webRequest.onCompleted.addListener((details) => {
+      const { tabId, requestId } = details;
+      if (!tabStorage.hasOwnProperty(tabId) || !tabStorage[tabId].requests.hasOwnProperty(requestId)) {
+          return;
+      }
+
+      const request = tabStorage[tabId].requests[requestId];
+
+      Object.assign(request, {
+          endTime: details.timeStamp,
+          requestDuration: details.timeStamp - request.startTime,
+          status: 'complete'
+      });
+      console.log(tabStorage[tabId].requests[details.requestId]);
+  }, networkFilters);
+
+  chrome.webRequest.onErrorOccurred.addListener((details)=> {
+      const { tabId, requestId } = details;
+      if (!tabStorage.hasOwnProperty(tabId) || !tabStorage[tabId].requests.hasOwnProperty(requestId)) {
+          return;
+      }
+
+      const request = tabStorage[tabId].requests[requestId];
+      Object.assign(request, {
+          endTime: details.timeStamp,           
+          status: 'error',
+      });
+      console.log(tabStorage[tabId].requests[requestId]);
+  }, networkFilters);
+
+  chrome.tabs.onActivated.addListener((tab) => {
+      const tabId = tab ? tab.tabId : chrome.tabs.TAB_ID_NONE;
+      if (!tabStorage.hasOwnProperty(tabId)) {
+          tabStorage[tabId] = {
+              id: tabId,
+              requests: {},
+              registerTime: new Date().getTime()
+          };
+      }
+  });
+  chrome.tabs.onRemoved.addListener((tab) => {
+      const tabId = tab.tabId;
+      if (!tabStorage.hasOwnProperty(tabId)) {
+          return;
+      }
+      tabStorage[tabId] = null;
+  });
+}());
+*/
