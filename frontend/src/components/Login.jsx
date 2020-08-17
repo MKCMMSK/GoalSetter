@@ -23,7 +23,17 @@ export default function Login() {
    */
   const responseGoogle = (response) => {
     console.log(response);
+    var id_token = response.getAuthResponse().id_token;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:8000/api/users/1/authentication/');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+      console.log('Signed in as: ' + xhr.responseText);
+    };
+    xhr.send('idtoken=' + id_token);
   };
+
 
   return (
     <PageLayout>
