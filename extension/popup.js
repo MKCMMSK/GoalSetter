@@ -82,58 +82,6 @@ const msToTime = (duration) => {
     return hours + ":" + minutes + ":" + seconds;
 }
 
-// does getCurrentTab  belong to content.js?
-function getCurrentTab(callback) {
-    chrome.tabs.query({
-        active: true,
-        currentWindow: true
-    },
-        (tabs) => {
-            callback(tabs[0]);
-        });
-}
-
-getCurrentTab((tab) => {
-    console.log('getCurrentTab', tab)
-
-    chrome.runtime.sendMessage({
-        action: "getTab",
-        tab: tab
-        , sender: tab
-    }, (response) => {
-        if (response) {
-            console.log(response)
-            this.setState({
-                traffic: Object.assign(this.state.traffic, response)
-            });
-        }
-    });
-});
 
 
-const retrieveData = () => {
-    console.log('retrieving data')
-    chrome.runtime.sendMessage({
-        action: "retrieveData"
-    }, (response) => {
-        send_data(response);
-    });
-};
 
-
-//sends data every 5 minutes
-window.setInterval(300000, retrieveData);
-
-
-const send_data = (data) => {
-    console.log(data);
-    $.ajax({
-        url: '/', //TO DO: get url
-        method: 'POST',
-        data: $.param(data),
-        success: () => {
-            console.log('Successfully sent data to server')
-        }
-    })
-        .catch((err) => console.log(err));
-};
